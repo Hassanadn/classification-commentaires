@@ -1,0 +1,39 @@
+# Environnement virtuel
+venv/
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Données et modèles (gérés par DVC)
+data/
+models/
+
+# Logs et monitoring
+logs/
+.mlflow/
+
+# Fichiers de configuration
+.env
+
+# Dossiers des IDE
+.idea/
+.vscode/
