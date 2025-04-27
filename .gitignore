@@ -24,8 +24,10 @@ wheels/
 *.egg
 
 # Données et modèles (gérés par DVC)
-data/
-models/
+data/**
+!data/*.dvc
+models/**
+!models/*.dvc
 
 # Logs et monitoring
 logs/
