@@ -37,3 +37,16 @@
 ├── docs/
 │    └── architecture.md
 └── requirements.txt       # Liste des dépendances du projet
+
+# Architecture DVC 
+
+├── README.md
+├── data/             # Ton dossier de données (raw, processed, external)
+├── models/           # Tes modèles entraînés
+├── src/              # Ton code source
+├── dvc.yaml          # (Créé automatiquement) Décrit les étapes de ton pipeline
+├── dvc.lock          # (Créé automatiquement) Versionne les fichiers
+├── .dvc/             # (Créé automatiquement) Métadonnées internes DVC
+├── .gitignore        # (Corrigé pour DVC)
+├── requirements.txt
+
