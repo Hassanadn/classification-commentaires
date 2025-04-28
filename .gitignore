@@ -1,12 +1,14 @@
 # Environnement virtuel
 venv/
 
-# Fichiers Python
+# Fichiers Python compilés
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+
+# Build
 build/
 develop-eggs/
 dist/
@@ -23,19 +25,23 @@ wheels/
 .installed.cfg
 *.egg
 
-# Données et modèles (gérés par DVC)
+# Données et modèles gérés par DVC
 data/**
-!data/*.dvc
+!data/**/*.dvc
 models/**
-!models/*.dvc
+!models/**/*.dvc
+
+# Fichiers spécifiques de datasets si besoin
+/test.csv
+/train.csv
 
 # Logs et monitoring
 logs/
 .mlflow/
 
-# Fichiers de configuration
+# Fichiers d'environnement et secrets
 .env
 
-# Dossiers des IDE
+# Dossiers d'IDE
 .idea/
 .vscode/
