@@ -12,5 +12,5 @@ Application web permettant de classifier automatiquement les commentaires des ut
 
 1. Cloner le dépôt
 ```bash
-git clone https://github.com/votre-nom-utilisateur/classification-commentaires.git
+git clone https://github.com/Hassanadn/classification-commentaires.git
 cd classification-commentaires
