@@ -1,12 +1,20 @@
-# Environnement virtuel
+# --------------------------
+# ENVIRONNEMENT VIRTUEL
+# --------------------------
 venv/
+.venv/
 
-# Fichiers Python
+# --------------------------
+# FICHIERS PYTHON
+# --------------------------
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 .Python
+
+# --------------------------
+# FICHIERS DE BUILD
+# --------------------------
 build/
 develop-eggs/
 dist/
@@ -23,19 +31,34 @@ wheels/
 .installed.cfg
 *.egg
 
-# Données et modèles (gérés par DVC)
+# --------------------------
+# DONNÉES ET MODÈLES (Gérés par DVC)
+# --------------------------
 data/**
-!data/*.dvc
+!data/**/*.dvc
 models/**
-!models/*.dvc
+!models/**/*.dvc
 
-# Logs et monitoring
+# --------------------------
+# LOGS ET MONITORING
+# --------------------------
 logs/
 .mlflow/
 
-# Fichiers de configuration
+# --------------------------
+# CONFIGURATION ET ENV
+# --------------------------
 .env
+*.env
 
-# Dossiers des IDE
-.idea/
+# --------------------------
+# DOSSIERS D'ENVIRONNEMENTS DE TRAVAIL (IDE)
+# --------------------------
 .vscode/
+.idea/
+
+# --------------------------
+# FICHIERS TEMPORAIRES
+# --------------------------
+.DS_Store
+Thumbs.db
