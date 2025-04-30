@@ -21,3 +21,9 @@ python-multipart>=0.0.6
 
 # Utilitaires
 python-dotenv>=1.0.0
+
+
+
+# pip install dvc[gdrive]
+# dvc remote add -d myremote gdrive://16BQaw_SjtLIwU6sRmmS5w0LejUsCdx44
+# 
