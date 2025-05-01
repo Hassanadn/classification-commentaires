@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/notebooks/mlruns/0/3c8d949c26fe43429e0017a2d149e141/artifacts
+end_time: 1746122624133
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3c8d949c26fe43429e0017a2d149e141
+run_name: crawling-turtle-104
+run_uuid: 3c8d949c26fe43429e0017a2d149e141
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746122624068
+status: 4
+tags: []
+user_id: user

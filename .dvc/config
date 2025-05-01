@@ -1,4 +1,6 @@
 [core]
     remote = myremote
+['remote "gdrive_remote"']
+    url = gdrive://16BQaw_SjtLIwU6sRmmS5w0LejUsCdx44
 ['remote "myremote"']
-    url = ../dvc-remote
+    url = ../dvcremote:MLOps_data

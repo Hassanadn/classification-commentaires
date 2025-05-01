@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/notebooks/mlruns/0/d3ab585ccee8419fad20c0bbd0b81f7e/artifacts
+end_time: 1746122799461
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d3ab585ccee8419fad20c0bbd0b81f7e
+run_name: nebulous-sloth-455
+run_uuid: d3ab585ccee8419fad20c0bbd0b81f7e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746122795952
+status: 3
+tags: []
+user_id: user
