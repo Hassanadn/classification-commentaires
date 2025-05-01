@@ -1,78 +1,84 @@
-"""
-Scripts pour télécharger ou générer des données
-"""
 import os
+import re
+import yaml
+import logging
 import pandas as pd
 from pathlib import Path
+from typing import Dict, Any, Iterator, Union
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
-def load_data(filepath):
-    """
-    Charge les données depuis un fichier
-    """
-    if filepath.endswith('.csv'):
-        return pd.read_csv(filepath)
-    elif filepath.endswith('.json'):
-        return pd.read_json(filepath)
-    else:
-        raise ValueError(f"Format de fichier non supporté: {filepath}")
+# Configure global logger
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
-def preprocess_data(df):
-    """
-    Prétraite les données textuelles
-    """
-    # Exemple simple de prétraitement
-    df['text_clean'] = df['text'].str.lower()
-    return df
+class DataPreprocessor:
+    def __init__(self, config_path: Union[str, Path] = None):
+        # Determine project root and default config path
+        project_root = Path(__file__).resolve().parents[2]
+        default_cfg = project_root / "config" / "config.yaml"
+        self.config_path = Path(config_path) if config_path else default_cfg
+        
+        # Load config
+        self.config = self._load_config(self.config_path)
+        
+        # Paths & params
+        self.input_file = project_root / self.config.get("input_file", "data/raw/train.csv")
+        self.output_file = project_root / self.config.get("output_file", "data/processed/x_train_clean.csv")
+        self.chunk_size = self.config.get("chunk_size", 10000)
+        
+        # Preprocessing settings
+        pp = self.config.get("preprocessing", {})
+        self.lowercase        = pp.get("lowercase", True)
+        self.remove_stopwords = pp.get("remove_stopwords", True)
+        self.min_word_length  = pp.get("min_word_length", 1)
 
-def split_data(df, test_size=0.2, val_size=0.1):
-    """
-    Divise les données en ensembles d'entraînement, validation et test
-    """
-    from sklearn.model_selection import train_test_split
-    
-    # D'abord, séparer les données de test
-    train_val, test = train_test_split(df, test_size=test_size, random_state=42)
-    
-    # Ensuite, séparer les données d'entraînement et de validation
-    train, val = train_test_split(train_val, test_size=val_size/(1-test_size), random_state=42)
-    
-    return train, val, test
+    def _load_config(self, path: Path) -> Dict[str, Any]:
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                cfg = yaml.safe_load(f)
+                logger.info(f"Configuration chargée depuis {path}")
+                return cfg
+        except Exception as e:
+            logger.warning(f"Impossible de charger {path}: {e}\nUtilisation des valeurs par défaut.")
+            return {}
 
-def main():
-    """
-    Point d'entrée principal pour le prétraitement des données
-    """
-    # Définir les chemins
-    project_dir = Path(__file__).resolve().parents[2]
-    raw_data_path = os.path.join(project_dir, 'data', 'raw')
-    processed_data_path = os.path.join(project_dir, 'data', 'processed')
-    
-    # Assurez-vous que les dossiers existent
-    os.makedirs(raw_data_path, exist_ok=True)
-    os.makedirs(processed_data_path, exist_ok=True)
-    
-    # Exemple: charger des données si elles existent
-    try:
-        data_file = os.path.join(raw_data_path, 'comments.csv')
-        df = load_data(data_file)
-        print(f"Données chargées avec succès: {len(df)} entrées")
-        
-        # Prétraiter les données
-        df_processed = preprocess_data(df)
-        
-        # Diviser les données
-        train, val, test = split_data(df_processed)
-        
-        # Sauvegarder les ensembles de données
-        train.to_csv(os.path.join(processed_data_path, 'train.csv'), index=False)
-        val.to_csv(os.path.join(processed_data_path, 'val.csv'), index=False)
-        test.to_csv(os.path.join(processed_data_path, 'test.csv'), index=False)
-        
-        print("Prétraitement terminé et données sauvegardées")
-        
-    except FileNotFoundError:
-        print(f"Fichier de données introuvable: {data_file}")
-        print("Veuillez placer vos données dans le dossier data/raw")
+    def _preprocess_text(self, text: str) -> str:
+        if self.lowercase:
+            text = text.lower()
+        text = re.sub(r"\W+", " ", text)
+        tokens = text.split()
+        if self.remove_stopwords:
+            tokens = [t for t in tokens if t not in ENGLISH_STOP_WORDS]
+        tokens = [t for t in tokens if len(t) >= self.min_word_length]
+        return " ".join(tokens)
+
+    def _data_generator(self) -> Iterator[pd.DataFrame]:
+        for chunk in pd.read_csv(self.input_file, chunksize=self.chunk_size, encoding="utf-8"):
+            logger.info(f"Chunk chargé: {len(chunk)} lignes")
+            chunk.dropna(subset=["text", "label"], inplace=True)
+            chunk["text"] = chunk["text"].astype(str).apply(self._preprocess_text)
+            yield chunk
+
+    def run(self):
+        """Lance le prétraitement et écrit les résultats dans output_file."""
+        self.output_file.parent.mkdir(parents=True, exist_ok=True)
+        first = True
+        for chunk in self._data_generator():
+            chunk.to_csv(
+                self.output_file,
+                mode="a",
+                index=False,
+                header=first,
+                encoding="utf-8"
+            )
+            logger.info(f"Chunk sauvegardé: {len(chunk)} lignes")
+            first = False
 
 if __name__ == "__main__":
-    main()
+    processor = DataPreprocessor()
+    logger.info("Démarrage du prétraitement...")
+    try:
+        processor.run()
+        logger.info("Prétraitement terminé avec succès!")
+    except Exception as e:
+        logger.error(f"Erreur durant le prétraitement: {e}")
