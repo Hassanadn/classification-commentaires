@@ -27,8 +27,13 @@ wheels/
 
 # Données et modèles gérés par DVC
 data/**
+!data/
 !data/**/*.dvc
+!data/raw/
+!data/processed/
+!data/external/
 models/**
+!models/
 !models/**/*.dvc
 
 # Fichiers spécifiques de datasets si besoin
