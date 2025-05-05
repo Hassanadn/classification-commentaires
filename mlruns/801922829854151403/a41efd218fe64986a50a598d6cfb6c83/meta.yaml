@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/a41efd218fe64986a50a598d6cfb6c83/artifacts
+end_time: 1746185049400
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: a41efd218fe64986a50a598d6cfb6c83
+run_name: enchanting-croc-652
+run_uuid: a41efd218fe64986a50a598d6cfb6c83
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746185045334
+status: 3
+tags: []
+user_id: user

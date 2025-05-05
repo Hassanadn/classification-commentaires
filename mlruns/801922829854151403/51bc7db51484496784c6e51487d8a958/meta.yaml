@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/51bc7db51484496784c6e51487d8a958/artifacts
+end_time: 1746187690490
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 51bc7db51484496784c6e51487d8a958
+run_name: debonair-snake-338
+run_uuid: 51bc7db51484496784c6e51487d8a958
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187687058
+status: 3
+tags: []
+user_id: user

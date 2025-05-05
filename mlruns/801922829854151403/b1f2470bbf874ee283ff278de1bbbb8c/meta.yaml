@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/b1f2470bbf874ee283ff278de1bbbb8c/artifacts
+end_time: 1746189578484
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: b1f2470bbf874ee283ff278de1bbbb8c
+run_name: traveling-carp-93
+run_uuid: b1f2470bbf874ee283ff278de1bbbb8c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189574426
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/5365dc2c41bf4bb29a39745a6b7eda0f/artifacts
+end_time: 1746186569950
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 5365dc2c41bf4bb29a39745a6b7eda0f
+run_name: inquisitive-mare-301
+run_uuid: 5365dc2c41bf4bb29a39745a6b7eda0f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186565189
+status: 3
+tags: []
+user_id: user

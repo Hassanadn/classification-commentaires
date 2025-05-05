@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/8fb1db660c584525940e84354e8ead68/artifacts
+end_time: 1746185692641
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 8fb1db660c584525940e84354e8ead68
+run_name: fun-snipe-171
+run_uuid: 8fb1db660c584525940e84354e8ead68
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746185688577
+status: 3
+tags: []
+user_id: user

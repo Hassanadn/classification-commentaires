@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/0e57e4e7560e47babf10249b649297d7/artifacts
+end_time: 1746186103220
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 0e57e4e7560e47babf10249b649297d7
+run_name: melodic-doe-745
+run_uuid: 0e57e4e7560e47babf10249b649297d7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186099054
+status: 3
+tags: []
+user_id: user

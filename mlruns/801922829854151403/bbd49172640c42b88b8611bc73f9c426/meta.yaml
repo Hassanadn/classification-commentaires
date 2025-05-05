@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/bbd49172640c42b88b8611bc73f9c426/artifacts
+end_time: 1746185942939
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: bbd49172640c42b88b8611bc73f9c426
+run_name: glamorous-koi-537
+run_uuid: bbd49172640c42b88b8611bc73f9c426
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746185939165
+status: 3
+tags: []
+user_id: user

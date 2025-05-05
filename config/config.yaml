@@ -1,9 +1,15 @@
 # Configuration du projet d'analyse de texte
 
 # Répertoires de données
-input_file: data/raw/train.csv
-output_file: data/processed/x_train_clean.csv
-chunk_size: 10000
+data:
+  raw_path: "data/raw/new_dataset.csv"
+  output_chunks_dir: "data/processed/train_clean_chunks"
+  output_path: "data/processed/X_train_clean.csv"
+  processed_path: "data/processed/x_train_clean.csv"
+
+# input_file: data/raw/new_dataset.csv
+# output_file: data/processed/x_train_clean.csv
+# chunk_size: 10000
 
 
 # Paramètres de prétraitement
@@ -21,7 +27,14 @@ model:
     ngram_range: [1, 2]
     max_df: 0.95
     min_df: 0.01
-  
+
+  bert:
+    model_name: bert-base-uncased
+    max_length: 128
+    num_labels: 2
+    epochs: 3
+    batch_size: 16
+        
 # Paramètres d'entraînement
 training:
   test_size: 0.2

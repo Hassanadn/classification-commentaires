@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/6acb7a9025374d27aba3f75770a312f2/artifacts
+end_time: 1746187616495
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 6acb7a9025374d27aba3f75770a312f2
+run_name: crawling-sponge-298
+run_uuid: 6acb7a9025374d27aba3f75770a312f2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187613110
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/63e900f2b0f346e3abaa17637e9a27b0/artifacts
+end_time: 1746186731412
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 63e900f2b0f346e3abaa17637e9a27b0
+run_name: likeable-dove-263
+run_uuid: 63e900f2b0f346e3abaa17637e9a27b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186727787
+status: 3
+tags: []
+user_id: user

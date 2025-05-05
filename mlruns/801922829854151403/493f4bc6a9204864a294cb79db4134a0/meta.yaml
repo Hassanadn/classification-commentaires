@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/493f4bc6a9204864a294cb79db4134a0/artifacts
+end_time: 1746187020361
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 493f4bc6a9204864a294cb79db4134a0
+run_name: useful-ox-501
+run_uuid: 493f4bc6a9204864a294cb79db4134a0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187016914
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/9c0255103f8b498c8202e95d200406de/artifacts
+end_time: 1746189962350
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 9c0255103f8b498c8202e95d200406de
+run_name: amazing-gull-564
+run_uuid: 9c0255103f8b498c8202e95d200406de
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189958119
+status: 3
+tags: []
+user_id: user

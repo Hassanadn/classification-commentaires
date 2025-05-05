@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/7bacd5360b7543e38d28d87a6193b78c/artifacts
+end_time: 1746189363067
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 7bacd5360b7543e38d28d87a6193b78c
+run_name: serious-flea-174
+run_uuid: 7bacd5360b7543e38d28d87a6193b78c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189358710
+status: 3
+tags: []
+user_id: user

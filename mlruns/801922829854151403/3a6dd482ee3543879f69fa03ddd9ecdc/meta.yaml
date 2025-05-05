@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/3a6dd482ee3543879f69fa03ddd9ecdc/artifacts
+end_time: 1746185704476
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 3a6dd482ee3543879f69fa03ddd9ecdc
+run_name: bouncy-chimp-245
+run_uuid: 3a6dd482ee3543879f69fa03ddd9ecdc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746185699837
+status: 3
+tags: []
+user_id: user
