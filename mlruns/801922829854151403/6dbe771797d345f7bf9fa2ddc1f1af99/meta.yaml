@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/6dbe771797d345f7bf9fa2ddc1f1af99/artifacts
+end_time: 1746187459010
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 6dbe771797d345f7bf9fa2ddc1f1af99
+run_name: rogue-fish-537
+run_uuid: 6dbe771797d345f7bf9fa2ddc1f1af99
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187454430
+status: 3
+tags: []
+user_id: user

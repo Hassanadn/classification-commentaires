@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/fef73ab840554d629ee0c70cf69ad1b7/artifacts
+end_time: 1746189186961
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: fef73ab840554d629ee0c70cf69ad1b7
+run_name: awesome-shark-355
+run_uuid: fef73ab840554d629ee0c70cf69ad1b7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189183330
+status: 3
+tags: []
+user_id: user

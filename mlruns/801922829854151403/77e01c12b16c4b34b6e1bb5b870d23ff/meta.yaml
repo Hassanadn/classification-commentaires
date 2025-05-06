@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/77e01c12b16c4b34b6e1bb5b870d23ff/artifacts
+end_time: 1746188107344
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 77e01c12b16c4b34b6e1bb5b870d23ff
+run_name: skillful-wasp-164
+run_uuid: 77e01c12b16c4b34b6e1bb5b870d23ff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746188103740
+status: 3
+tags: []
+user_id: user

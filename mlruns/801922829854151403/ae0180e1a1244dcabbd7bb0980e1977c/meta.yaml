@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/ae0180e1a1244dcabbd7bb0980e1977c/artifacts
+end_time: 1746189327557
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: ae0180e1a1244dcabbd7bb0980e1977c
+run_name: nervous-flea-291
+run_uuid: ae0180e1a1244dcabbd7bb0980e1977c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189323964
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/56f97ff7a1c8429aa11832c90fff457f/artifacts
+end_time: 1746185014700
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 56f97ff7a1c8429aa11832c90fff457f
+run_name: aged-pig-4
+run_uuid: 56f97ff7a1c8429aa11832c90fff457f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746185010762
+status: 3
+tags: []
+user_id: user

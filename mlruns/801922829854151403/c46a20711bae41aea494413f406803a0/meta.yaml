@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/c46a20711bae41aea494413f406803a0/artifacts
+end_time: 1746186281505
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: c46a20711bae41aea494413f406803a0
+run_name: placid-robin-176
+run_uuid: c46a20711bae41aea494413f406803a0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186277013
+status: 3
+tags: []
+user_id: user

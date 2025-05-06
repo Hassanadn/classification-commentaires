@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/591c70be7add48d3adf72a598f819acb/artifacts
+end_time: 1746284311097
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 591c70be7add48d3adf72a598f819acb
+run_name: grandiose-ox-208
+run_uuid: 591c70be7add48d3adf72a598f819acb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746284309146
+status: 4
+tags: []
+user_id: user

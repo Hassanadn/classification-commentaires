@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/0a3018e46f49470ba0402208b6debe4d/artifacts
+end_time: 1746187566920
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 0a3018e46f49470ba0402208b6debe4d
+run_name: gregarious-gnu-599
+run_uuid: 0a3018e46f49470ba0402208b6debe4d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187563444
+status: 3
+tags: []
+user_id: user

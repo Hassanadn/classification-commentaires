@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/80bec8abba6d4a64b628706ccc1d8ad8/artifacts
+end_time: 1746189144969
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 80bec8abba6d4a64b628706ccc1d8ad8
+run_name: debonair-bug-648
+run_uuid: 80bec8abba6d4a64b628706ccc1d8ad8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189139908
+status: 3
+tags: []
+user_id: user

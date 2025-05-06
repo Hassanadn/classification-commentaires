@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/77bbde06414545d6aa7c099dc0105d77/artifacts
+end_time: 1746189708694
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 77bbde06414545d6aa7c099dc0105d77
+run_name: orderly-smelt-713
+run_uuid: 77bbde06414545d6aa7c099dc0105d77
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189705230
+status: 3
+tags: []
+user_id: user

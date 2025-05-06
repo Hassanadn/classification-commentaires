@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/3944429e56584e95a778a29b21092cd5/artifacts
+end_time: 1746189561943
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 3944429e56584e95a778a29b21092cd5
+run_name: sneaky-vole-931
+run_uuid: 3944429e56584e95a778a29b21092cd5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189558325
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/f1bad0a7036f49a697c94140183ede3e/artifacts
+end_time: 1746189978642
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: f1bad0a7036f49a697c94140183ede3e
+run_name: unruly-sheep-69
+run_uuid: f1bad0a7036f49a697c94140183ede3e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189975029
+status: 3
+tags: []
+user_id: user

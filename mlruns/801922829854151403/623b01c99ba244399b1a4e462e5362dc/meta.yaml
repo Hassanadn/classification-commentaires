@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/623b01c99ba244399b1a4e462e5362dc/artifacts
+end_time: 1746189311244
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 623b01c99ba244399b1a4e462e5362dc
+run_name: rumbling-grouse-473
+run_uuid: 623b01c99ba244399b1a4e462e5362dc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189307784
+status: 3
+tags: []
+user_id: user

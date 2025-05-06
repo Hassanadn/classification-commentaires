@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/4be88ac9fd2c4e45ba890bf7295252ce/artifacts
+end_time: 1746186955831
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 4be88ac9fd2c4e45ba890bf7295252ce
+run_name: learned-ram-855
+run_uuid: 4be88ac9fd2c4e45ba890bf7295252ce
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186950536
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/4eb8d587ac444d4cbdb57b54976a5443/artifacts
+end_time: 1746187366518
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 4eb8d587ac444d4cbdb57b54976a5443
+run_name: carefree-bass-652
+run_uuid: 4eb8d587ac444d4cbdb57b54976a5443
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187362751
+status: 3
+tags: []
+user_id: user

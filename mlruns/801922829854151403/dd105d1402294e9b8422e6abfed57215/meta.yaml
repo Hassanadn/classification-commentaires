@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/dd105d1402294e9b8422e6abfed57215/artifacts
+end_time: 1746187028252
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: dd105d1402294e9b8422e6abfed57215
+run_name: monumental-mare-826
+run_uuid: dd105d1402294e9b8422e6abfed57215
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187024782
+status: 3
+tags: []
+user_id: user
