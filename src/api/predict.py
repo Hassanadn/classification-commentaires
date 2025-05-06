@@ -29,3 +29,4 @@ class Predictor:
         outputs = self.bert_model(**bert_inputs)
         bert_pred = np.argmax(outputs.logits.detach().numpy(), axis=1)[0]
         return {"random_forest": int(rf_pred), "bert": int(bert_pred)}
+

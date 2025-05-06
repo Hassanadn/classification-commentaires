@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/classification-commentaires/mlruns/499758395805165408/65718a9344ca4fcf945aecc38de5b45f/artifacts
+end_time: 1746261751799
+entry_point_name: ''
+experiment_id: '499758395805165408'
+lifecycle_stage: active
+run_id: 65718a9344ca4fcf945aecc38de5b45f
+run_name: rogue-gnat-500
+run_uuid: 65718a9344ca4fcf945aecc38de5b45f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746260677840
+status: 4
+tags: []
+user_id: pc

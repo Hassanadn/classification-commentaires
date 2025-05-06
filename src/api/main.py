@@ -1,3 +1,5 @@
+
+
 # from fastapi import FastAPI
 # import pickle
 # from transformers import BertForSequenceClassification, BertTokenizer
@@ -76,4 +78,5 @@ async def predict(request: Request, text: str = Form(...)):
         "prediction": sentiment,
         "input_text": text
     })
+
 

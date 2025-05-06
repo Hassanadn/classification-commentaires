@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/736799144060722838/be5ac9e030f9480db886ea42a2a40773/artifacts
+end_time: 1746286655576
+entry_point_name: ''
+experiment_id: '736799144060722838'
+lifecycle_stage: active
+run_id: be5ac9e030f9480db886ea42a2a40773
+run_name: caring-stork-815
+run_uuid: be5ac9e030f9480db886ea42a2a40773
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746286655363
+status: 4
+tags: []
+user_id: pc

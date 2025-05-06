@@ -1,4 +1,3 @@
-import pandas as pd
 from typing import Iterator, Tuple
 from src.utils.helper_functions import timer_decorator
 import yaml
@@ -64,3 +63,4 @@ class DataLoader:
             raise FileNotFoundError(f"Le fichier traité {self.processed_path} n'existe pas. Exécutez process_and_save_chunks d'abord.")
         for chunk in pd.read_csv(self.processed_path, chunksize=batch_size):
             yield chunk['text'].tolist(), chunk['label'].tolist()
+

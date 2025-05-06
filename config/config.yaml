@@ -1,3 +1,7 @@
+
+data:
+  raw_path: "data/raw/raw_data.csv"
+  processed_path: "processed_data.csv" 
 # Configuration du projet d'analyse de texte
 
 # Répertoires de données
@@ -39,90 +43,24 @@ model:
 training:
   test_size: 0.2
   random_state: 42
-  cv_folds: 5
-  target_column: "label"
-
-# Paramètres d'évaluation
-evaluation:
-  metrics: ["accuracy", "precision", "recall", "f1"]
-
-# Logging
-logging:
-  level: "INFO"
-  save_path: logs/process.log
-
-# Exploration de données
-exploratory:
-  generate_plots: true
-  plots_dir: reports/figures
-
-# Fichiers supplémentaires (si besoin)
-files:
-  raw_data: raw_data.csv
-  processed_data: processed_data.csv
-  model_output: models/model.pkl
-
-# Paramètres de traitement par lots (chunks)
-chunks:
-    enabled: true
-    size: 10000  # Utilise la même valeur que chunk_size
-    overlap: 0  # Chevauchement entre segments consécutifs
-    processing_mode: "parallel"  # "sequential" ou "parallel"
-    max_workers: 4  # Nombre maximum de workers pour le traitement parallèle
-    memory_limit: 2048  # Limite de mémoire en MB par worker
-    timeout: 300  # Timeout en secondes pour le traitement d'un chunk
-    save_intermediate: true  # Sauvegarder les résultats intermédiaires
-    intermediate_dir: "data/intermediate"  # Répertoire pour les résultats intermédiaires
-
-# Paramètres de génération
-generators:
-  text_augmentation:
-    enabled: false
-    techniques:
-      - name: "synonym_replacement"
-        probability: 0.3
-        max_replacements: 2
-      - name: "random_insertion"
-        probability: 0.2
-        max_insertions: 2
-      - name: "random_swap"
-        probability: 0.2
-        max_swaps: 2
-      - name: "random_deletion"
-        probability: 0.2
-        max_deletions: 2
-    augmentation_factor: 2  # Nombre de textes augmentés à générer par texte original
-    preserve_label: true  # Préserver les étiquettes originales
-    language: "fr"  # Langue pour les opérations linguistiques
-  
-  batch_generator:
-    enabled: true
-    batch_size: 32
-    shuffle: true
-    drop_last: false
-    buffer_size: 1000
-    prefetch: 2
-    
-  sequence_generator:
-    enabled: false
-    sequence_length: 128
-    stride: 64
-    pad_sequences: true
-    truncate_sequences: true
-    padding: "post"  # "pre" ou "post"
-    truncating: "post"  # "pre" ou "post"
-
-  text_cleaning:
-    enabled: true
-    pipeline:
-      - name: "remove_html"
-        enabled: true
-      - name: "remove_urls"
-        enabled: true
-      - name: "remove_punctuation"
-        enabled: true
-        exceptions: [".", "!", "?", ",", ";", ":", "'", "-"]
-      - name: "remove_numbers"
-        enabled: false
-      - name: "remove_extra_whitespaces"
-        enabled: true
+model:
+  model_filename: "model_v1_{timestamp}.pkl"  
+  n_estimators: 100
+  max_depth: 10
+  ngram_range: [1, 2] 
+  max_features: 5000
+  param_grid:  
+    tfidf__max_features: [3000, 5000]
+    tfidf__ngram_range:
+      - [1, 1]
+      - [1, 2]
+    clf__n_estimators: [100, 200]
+    clf__max_depth: [null, 20, 50]
+    clf__min_samples_split: [2, 5]
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "random_forest_text_classification"
+  log_model: true
+  log_metrics: true
+  log_artifacts: true
+  artifact_location: "mlruns"
