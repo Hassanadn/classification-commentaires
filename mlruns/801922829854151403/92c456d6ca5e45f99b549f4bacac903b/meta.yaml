@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/92c456d6ca5e45f99b549f4bacac903b/artifacts
+end_time: 1746187449781
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 92c456d6ca5e45f99b549f4bacac903b
+run_name: clumsy-hawk-430
+run_uuid: 92c456d6ca5e45f99b549f4bacac903b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187445068
+status: 3
+tags: []
+user_id: user

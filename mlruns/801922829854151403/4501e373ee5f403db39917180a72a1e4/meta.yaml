@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/4501e373ee5f403db39917180a72a1e4/artifacts
+end_time: 1746184952925
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 4501e373ee5f403db39917180a72a1e4
+run_name: luminous-stag-251
+run_uuid: 4501e373ee5f403db39917180a72a1e4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746184948621
+status: 3
+tags: []
+user_id: user

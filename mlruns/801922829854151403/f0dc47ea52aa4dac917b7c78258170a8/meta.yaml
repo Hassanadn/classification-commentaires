@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/f0dc47ea52aa4dac917b7c78258170a8/artifacts
+end_time: 1746186468945
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: f0dc47ea52aa4dac917b7c78258170a8
+run_name: rogue-cod-99
+run_uuid: f0dc47ea52aa4dac917b7c78258170a8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186464985
+status: 3
+tags: []
+user_id: user

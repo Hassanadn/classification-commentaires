@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/c27685f6cbdb4955ae7a115e031d2df7/artifacts
+end_time: 1746189479854
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: c27685f6cbdb4955ae7a115e031d2df7
+run_name: fun-turtle-161
+run_uuid: c27685f6cbdb4955ae7a115e031d2df7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189476318
+status: 3
+tags: []
+user_id: user

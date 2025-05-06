@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/1cf0b3df08f44e56a5b9ac7a17d3ba75/artifacts
+end_time: 1746186704633
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 1cf0b3df08f44e56a5b9ac7a17d3ba75
+run_name: rare-goose-785
+run_uuid: 1cf0b3df08f44e56a5b9ac7a17d3ba75
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186701104
+status: 3
+tags: []
+user_id: user

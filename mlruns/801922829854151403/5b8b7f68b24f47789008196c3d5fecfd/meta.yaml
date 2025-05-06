@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/5b8b7f68b24f47789008196c3d5fecfd/artifacts
+end_time: 1746188115451
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 5b8b7f68b24f47789008196c3d5fecfd
+run_name: defiant-shad-335
+run_uuid: 5b8b7f68b24f47789008196c3d5fecfd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746188111841
+status: 3
+tags: []
+user_id: user

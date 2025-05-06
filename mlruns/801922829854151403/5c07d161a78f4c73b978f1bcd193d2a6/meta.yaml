@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/5c07d161a78f4c73b978f1bcd193d2a6/artifacts
+end_time: 1746189161469
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 5c07d161a78f4c73b978f1bcd193d2a6
+run_name: suave-seal-288
+run_uuid: 5c07d161a78f4c73b978f1bcd193d2a6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746189157847
+status: 3
+tags: []
+user_id: user

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/5c32fad897334ca4bb97193db4273a48/artifacts
+end_time: 1746186717475
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 5c32fad897334ca4bb97193db4273a48
+run_name: dapper-moth-76
+run_uuid: 5c32fad897334ca4bb97193db4273a48
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746186713554
+status: 3
+tags: []
+user_id: user

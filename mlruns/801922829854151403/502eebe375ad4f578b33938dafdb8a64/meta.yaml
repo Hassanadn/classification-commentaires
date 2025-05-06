@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/502eebe375ad4f578b33938dafdb8a64/artifacts
+end_time: 1746187375663
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: 502eebe375ad4f578b33938dafdb8a64
+run_name: rogue-koi-261
+run_uuid: 502eebe375ad4f578b33938dafdb8a64
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187372343
+status: 3
+tags: []
+user_id: user

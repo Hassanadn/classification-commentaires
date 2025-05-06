@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/OneDrive/Desktop/MD3S-FP/Semester%201/Python%20Av/Workspace%20python/classification-commentaires/mlruns/801922829854151403/ad777eb1843940dabd870805bc21d901/artifacts
+end_time: 1746187880396
+entry_point_name: ''
+experiment_id: '801922829854151403'
+lifecycle_stage: active
+run_id: ad777eb1843940dabd870805bc21d901
+run_name: funny-gnu-607
+run_uuid: ad777eb1843940dabd870805bc21d901
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746187877042
+status: 3
+tags: []
+user_id: user
