@@ -13,7 +13,7 @@
 │   ├── data/              # Scripts pour charger et traiter les données
 │   │   └── load_data.py   # Script pour charger les données
 │   ├── features/          # Scripts pour créer des features
-│   │   └── feature_engineering.py  # Script pour l'ingénierie des features
+│   │   └── text_processor.py  # Script pour l'ingénierie des features
 │   ├── models/            # Scripts pour entraîner et évaluer les modèles
 │   │   ├── train_model.py  # Script pour entraîner le modèle
 │   │   └── evaluate_model.py  # Script pour évaluer le modèle

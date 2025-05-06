@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/classification-commentaires/mlruns/499758395805165408/5ec7b4d2d80d4cccb96c3e86c4b59f67/artifacts
+end_time: 1746263579704
+entry_point_name: ''
+experiment_id: '499758395805165408'
+lifecycle_stage: active
+run_id: 5ec7b4d2d80d4cccb96c3e86c4b59f67
+run_name: gaudy-lark-629
+run_uuid: 5ec7b4d2d80d4cccb96c3e86c4b59f67
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746263579591
+status: 4
+tags: []
+user_id: pc
