@@ -6,6 +6,7 @@ data:
   output_chunks_dir: "data/processed/train_clean_chunks"
   output_path: "data/processed/X_train_clean.csv"
   processed_path: "data/processed/x_train_clean.csv"
+  
 
 # input_file: data/raw/new_dataset.csv
 # output_file: data/processed/x_train_clean.csv
@@ -34,7 +35,11 @@ model:
     num_labels: 2
     epochs: 3
     batch_size: 16
-        
+    warmup_steps: 0.1
+    weight_decay: 0.1
+    save_total_limit: 1
+    logging_steps: 100
+    output_dir: "models/bert_output_dir"        
 # Paramètres d'entraînement
 training:
   test_size: 0.2
