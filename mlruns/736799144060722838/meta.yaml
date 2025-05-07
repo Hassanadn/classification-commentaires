@@ -1,6 +1,0 @@
-artifact_location: mlflow-artifacts:/736799144060722838
-creation_time: 1746265126337
-experiment_id: '736799144060722838'
-last_update_time: 1746265126337
-lifecycle_stage: active
-name: RandomForest_Text_Classification
