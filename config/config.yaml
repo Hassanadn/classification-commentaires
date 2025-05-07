@@ -1,133 +1,69 @@
-# Configuration du projet d'analyse de texte
+# Configuration générale du projet d'analyse de texte
 
 # Répertoires de données
 data:
-  raw_path: "data/raw/new_dataset.csv"
-  output_chunks_dir: "data/processed/train_clean_chunks"
-  output_path: "data/processed/X_train_clean.csv"
-  processed_path: "data/processed/x_train_clean.csv"
-  
+  raw_path: "data/raw/new_dataset.csv"        # Chemin vers les données brutes
+  processed_path: "data/processed/new_dataset.csv"  # Chemin vers les données traitées
+  output_chunks_dir: "data/processed/train_clean_chunks"  # Dossier pour stocker les chunks traités
+  output_path: "data/processed/X_train_clean.csv"  # Chemin vers les données d'entraînement nettoyées
+  test_size: 0.2  # Proportion des données pour le test (80% pour l'entraînement)
+  random_state: 42  # Seed pour la reproductibilité des résultats
 
-# input_file: data/raw/new_dataset.csv
-# output_file: data/processed/x_train_clean.csv
-# chunk_size: 10000
-
-
-# Paramètres de prétraitement
+# Paramètres de prétraitement des données
 preprocessing:
-  remove_stopwords: true       # Supprimer les mots vides (stopwords)
-  lowercase: true              # Convertir en minuscules
-  lemmatize: false             # Lemmatization (non utilisé dans le script actuel)
-  min_word_length: 3           # Longueur minimale d'un mot
-  max_features: 10000          # Pour vectorisation (utilisé plus tard)
+  remove_stopwords: true        # Supprimer les mots vides (stopwords)
+  lowercase: true               # Convertir en minuscules
+  lemmatize: false              # Lemmatization (non utilisé dans le script actuel)
+  min_word_length: 3            # Longueur minimale d'un mot
+  max_features: 10000           # Nombre maximal de caractéristiques pour la vectorisation
 
-# Paramètres de modélisation
+# Configuration des modèles
 model:
-  type: "tfidf"                # Options: "tfidf", "word2vec", "bert"
-  vectorizer_params:
-    ngram_range: [1, 2]
-    max_df: 0.95
-    min_df: 0.01
-
-  bert:
-    model_name: bert-base-uncased
-    max_length: 128
-    num_labels: 2
-    epochs: 3
-    batch_size: 16
-    warmup_steps: 0.1
-    weight_decay: 0.1
-    save_total_limit: 1
-    logging_steps: 100
-    output_dir: "models/bert_output_dir"        
-# Paramètres d'entraînement
-training:
-  test_size: 0.2
-  random_state: 42
-  cv_folds: 5
-  target_column: "label"
-
-# Paramètres d'évaluation
-evaluation:
-  metrics: ["accuracy", "precision", "recall", "f1"]
-
-# Logging
-logging:
-  level: "INFO"
-  save_path: logs/process.log
-
-# Exploration de données
-exploratory:
-  generate_plots: true
-  plots_dir: reports/figures
-
-# Fichiers supplémentaires (si besoin)
-files:
-  raw_data: raw_data.csv
-  processed_data: processed_data.csv
-  model_output: models/model.pkl
-
-# Paramètres de traitement par lots (chunks)
-chunks:
-    enabled: true
-    size: 10000  # Utilise la même valeur que chunk_size
-    overlap: 0  # Chevauchement entre segments consécutifs
-    processing_mode: "parallel"  # "sequential" ou "parallel"
-    max_workers: 4  # Nombre maximum de workers pour le traitement parallèle
-    memory_limit: 2048  # Limite de mémoire en MB par worker
-    timeout: 300  # Timeout en secondes pour le traitement d'un chunk
-    save_intermediate: true  # Sauvegarder les résultats intermédiaires
-    intermediate_dir: "data/intermediate"  # Répertoire pour les résultats intermédiaires
-
-# Paramètres de génération
-generators:
-  text_augmentation:
-    enabled: false
-    techniques:
-      - name: "synonym_replacement"
-        probability: 0.3
-        max_replacements: 2
-      - name: "random_insertion"
-        probability: 0.2
-        max_insertions: 2
-      - name: "random_swap"
-        probability: 0.2
-        max_swaps: 2
-      - name: "random_deletion"
-        probability: 0.2
-        max_deletions: 2
-    augmentation_factor: 2  # Nombre de textes augmentés à générer par texte original
-    preserve_label: true  # Préserver les étiquettes originales
-    language: "fr"  # Langue pour les opérations linguistiques
+  # Configuration du modèle Random Forest
+  random_forest:
+    output_dir: "models/random_forest_v1"  # Dossier pour sauvegarder le modèle Random Forest
+    type: "tfidf"                # Type de vectorisation : "tfidf", "word2vec", "bert"
+    vectorizer_params:
+      ngram_range: [1, 2]        # Plage des n-grammes (uniques et bigrammes)
+      max_df: 0.95               # Ignorer les mots apparaissant dans plus de 95% des documents
+      min_df: 0.01               # Garder les mots qui apparaissent dans au moins 1% des documents
+    vectorizer_path: "models/random_forest_model.pkl"  # Chemin pour sauvegarder le modèle TF-IDF
+    model_filename: "random_forest_model.pkl"  # Nom du fichier du modèle Random Forest
+    n_estimators: 100           # Nombre d'arbres dans la forêt
+    max_depth: 10               # Profondeur maximale des arbres
+    param_grid:
+      tfidf__max_features: [3000, 5000]
+      tfidf__ngram_range:
+        - [1, 1]
+        - [1, 2]
+      clf__n_estimators: [100, 200]
+      clf__max_depth: [null, 20, 50]
+      clf__min_samples_split: [2, 5]
   
-  batch_generator:
-    enabled: true
-    batch_size: 32
-    shuffle: true
-    drop_last: false
-    buffer_size: 1000
-    prefetch: 2
-    
-  sequence_generator:
-    enabled: false
-    sequence_length: 128
-    stride: 64
-    pad_sequences: true
-    truncate_sequences: true
-    padding: "post"  # "pre" ou "post"
-    truncating: "post"  # "pre" ou "post"
+  # Configuration du modèle BERT
+  bert:
+    bert_path: 'models/bert_v1'  # Dossier contenant le modèle BERT pré-entraîné
+    model_name: "bert-base-uncased"  # Nom du modèle BERT à utiliser
+    max_length: 128              # Longueur maximale des séquences d'entrée
+    num_labels: 2                # Nombre de labels pour la classification (2 pour binaire)
+    epochs: 3                    # Nombre d'époques d'entraînement
+    batch_size: 16               # Taille des lots (batch size)
+    warmup_steps: 0.1            # Pourcentage des étapes d'entraînement pour le warm-up
+    weight_decay: 0.1            # Taux de décroissance du poids pour la régularisation
+    save_total_limit: 1          # Nombre maximal de modèles sauvegardés
+    logging_steps: 100           # Fréquence des logs pendant l'entraînement
+    output_dir: "models/bert_output_dir"  # Dossier où le modèle sera sauvegardé
 
-  text_cleaning:
-    enabled: true
-    pipeline:
-      - name: "remove_html"
-        enabled: true
-      - name: "remove_urls"
-        enabled: true
-      - name: "remove_punctuation"
-        enabled: true
-        exceptions: [".", "!", "?", ",", ";", ":", "'", "-"]
-      - name: "remove_numbers"
-        enabled: false
-      - name: "remove_extra_whitespaces"
-        enabled: true
+# Paramètres d'entraînement pour les modèles
+training:
+  test_size: 0.2                # Proportion des données pour l'évaluation
+  random_state: 42              # Seed pour la reproductibilité des résultats
+
+# Configuration de MLflow pour le suivi des expériences
+mlflow:
+  tracking_uri: "http://localhost:5000"  # URI du serveur MLflow
+  experiment_name: "random_forest_text_classification"  # Nom de l'expérience
+  log_model: true                          # Enregistrer le modèle dans MLflow
+  log_metrics: true                        # Enregistrer les métriques dans MLflow
+  log_artifacts: true                      # Enregistrer les artefacts dans MLflow
+  artifact_location: "mlruns"              # Répertoire des artefacts sauvegardés par MLflow
