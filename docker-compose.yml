@@ -22,3 +22,16 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin123
     volumes:
       - ./data/grafana:/var/lib/grafana
+      
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+
+volumes:
+  grafana_data:
+

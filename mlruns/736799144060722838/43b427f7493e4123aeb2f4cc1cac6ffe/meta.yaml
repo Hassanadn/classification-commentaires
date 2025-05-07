@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/736799144060722838/43b427f7493e4123aeb2f4cc1cac6ffe/artifacts
+end_time: 1746266773751
+entry_point_name: ''
+experiment_id: '736799144060722838'
+lifecycle_stage: active
+run_id: 43b427f7493e4123aeb2f4cc1cac6ffe
+run_name: bright-gnat-593
+run_uuid: 43b427f7493e4123aeb2f4cc1cac6ffe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746265680774
+status: 4
+tags: []
+user_id: pc

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/classification-commentaires/mlruns/499758395805165408/28ca2c9905764053b521774be50b7b70/artifacts
+end_time: 1746224643753
+entry_point_name: ''
+experiment_id: '499758395805165408'
+lifecycle_stage: active
+run_id: 28ca2c9905764053b521774be50b7b70
+run_name: puzzled-donkey-226
+run_uuid: 28ca2c9905764053b521774be50b7b70
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746220084197
+status: 4
+tags: []
+user_id: pc

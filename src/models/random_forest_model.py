@@ -1,76 +1,121 @@
-import logging
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-
+import yaml
 import mlflow
+import mlflow.sklearn
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from src.features.text_processor import TextProcessor
-from src.models.abstract_text_classification_model import TextClassificationModel
-from src.utils.helper_functions import timer_decorator
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
+import joblib
+from datetime import datetime
 
-class RandomForestTextClassifier(TextClassificationModel):
-    def _init_(self, config_path: str):
-        super()._init_(config_path)
-        self.feature_engineer = TextProcessor(config_path)
-        self.model = None  
-        self.param_grid = self.config['model']['param_grid']
-        self.vectorizer_params = self.config['model']['vectorizer_params'] 
-        self.mlflow_config = self.config.get("mlflow", {})
+class RandomForest:
+    def __init__(self, config_path: str):
+        with open(config_path, 'r') as f:
+            self.config = yaml.safe_load(f)
+        self._load_data()
+        self._build_pipeline()
+        self.model = None
 
-    @timer_decorator
-    def train(self, df: pd.DataFrame):
-        # logging.info(f"Entraînement sur un lot de {len(df)} lignes")
-        # texts, labels = df['text'].tolist(), df['label'].tolist()
+    def _load_data(self):
+        # Chargement des données traitées depuis le chemin spécifié dans la config
+        data_path = "C:/Users/pc/Desktop/classification-commentaires/data/processed/processed_data.csv"
 
-        # # Pipeline : vectoriseur + classifieur
-        # pipeline = Pipeline(steps=[
-        #     ('tfidf', TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-        #     ('clf', RandomForestClassifier(random_state=42))
-        # ])
+        # self.config["data"]["processed_path"]
+        if not os.path.isabs(data_path):
+            data_path = os.path.join("data", "processed", data_path)
+        self.data = pd.read_csv(data_path).dropna(subset=['text'])
+        self.X = self.data['text']
+        self.y = self.data['label']
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+            self.X, self.y, 
+            test_size=self.config["data"]["test_size"], 
+            random_state=self.config["data"]["random_state"]
+        )
 
-        # grid_search = GridSearchCV(
-        #     estimator=pipeline,
-        #     param_grid=self.param_grid,
-        #     cv=3, 
-        #     n_jobs=-1,
-        #     scoring="accuracy",
-        #     verbose=2
-        # )
+    def _build_pipeline(self):
+        # Conversion du ngram_range en tuple
+        ngram_range = tuple(self.config["model"]["ngram_range"])
+        self.pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer(
+                ngram_range=ngram_range,
+                max_features=self.config["model"]["max_features"]
+            )),
+            ('clf', RandomForestClassifier(
+                n_estimators=self.config["model"]["n_estimators"],
+                max_depth=self.config["model"]["max_depth"],
+                random_state=42
+            ))
+        ])
+        
+        # Conversion des listes en tuples pour ngram_range dans param_grid
+        param_grid = self.config["model"]["param_grid"].copy()
+        if 'tfidf__ngram_range' in param_grid:
+            param_grid['tfidf__ngram_range'] = [tuple(ng) for ng in param_grid['tfidf__ngram_range']]
+        
+        self.param_grid = param_grid
 
-        # grid_search.fit(texts, labels)
-        # self.model = grid_search.best_estimator_
-        # best_params = grid_search.best_params_
-        # best_score = grid_search.best_score_
+    def train(self):
+        print("🔍 GridSearchCV en cours...")
+        grid_search = GridSearchCV(
+            self.pipeline,
+            self.param_grid,
+            cv=3,
+            scoring='accuracy',
+            n_jobs=-1,
+            verbose=2
+        )
+        grid_search.fit(self.X_train, self.y_train)
+        self.model = grid_search.best_estimator_
+        print("✅ Meilleurs paramètres :", grid_search.best_params_)
 
-        # logging.info(f"Meilleurs paramètres : {best_params}")
-        # logging.info(f"Meilleure précision (validation croisée) : {best_score:.4f}")
+    def evaluate(self):
+        y_pred = self.model.predict(self.X_test)
+        print("\n📊 Rapport de classification :")
+        print(classification_report(self.y_test, y_pred))
+        acc = accuracy_score(self.y_test, y_pred)
+        print("🎯 Accuracy:", acc)
+        cm = confusion_matrix(self.y_test, y_pred)
+        return acc, cm
 
-        # # MLflow logging
-        # if self.mlflow_config.get("log_model", False):
-        #     mlflow.set_tracking_uri(self.mlflow_config["tracking_uri"])
-        #     experiment = mlflow.get_experiment_by_name(self.mlflow_config["experiment_name"])
-        #     if experiment is None:
-        #         experiment_id = mlflow.create_experiment(
-        #             self.mlflow_config["experiment_name"],
-        #             artifact_location=self.mlflow_config["artifact_location"]
-        #         )
-        #     else:
-        #         experiment_id = experiment.experiment_id
+    def save_model(self):
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        model_filename = self.config["model"]["model_filename"].format(timestamp=timestamp)
+        os.makedirs("models", exist_ok=True)
+        path = os.path.join("models", model_filename)
+        joblib.dump(self.model, path)
+        print(f"💾 Modèle sauvegardé à {path}")
 
-        #     with mlflow.start_run(experiment_id=experiment_id):
-        #         mlflow.log_params(best_params)
-        #         mlflow.log_metric("cv_accuracy", best_score)
-        #         mlflow.sklearn.log_model(self.model, "random_forest_v1")
-        #         logging.info("Modèle loggé dans MLflow")
-        pass
-    def save_model(self, path):
-        import pickle
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, 'wb') as f:
-            pickle.dump(self.model, f)
-        logging.info(f"Modèle sauvegardé à {path}")
+    def log_with_mlflow(self):
+        mlflow.set_tracking_uri(self.config["mlflow"]["tracking_uri"])
+        mlflow.set_experiment(self.config["mlflow"]["experiment_name"])
+
+        with mlflow.start_run():
+            acc, cm = self.evaluate()
+
+            if self.config["mlflow"]["log_metrics"]:
+                mlflow.log_metric("accuracy", acc)
+
+            if self.config["mlflow"]["log_model"]:
+                mlflow.sklearn.log_model(self.model, "model")
+
+            if self.config["mlflow"]["log_artifacts"]:
+                # Génération de la matrice de confusion
+                plt.figure(figsize=(6, 5))
+                sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
+                plt.title("Confusion Matrix")
+                plt.xlabel("Predicted")
+                plt.ylabel("Actual")
+                plot_path = "confusion_matrix.png"
+                plt.savefig(plot_path)
+                mlflow.log_artifact(plot_path)
+                os.remove(plot_path)
+
+    def run(self):
+        self.train()
+        self.save_model()
+        self.log_with_mlflow()
