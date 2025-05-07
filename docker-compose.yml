@@ -1,5 +1,28 @@
-version: '3.8'
+version: '3.7'
+
 services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./data/influxdb:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=metrics
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin123
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+      
   prometheus:
     image: prom/prometheus
     volumes:
@@ -9,14 +32,6 @@ services:
     ports:
       - 9090:9090
 
-  grafana:
-    image: grafana/grafana
-    volumes:
-      - grafana_data:/var/lib/grafana
-    ports:
-      - 3000:3000
-    depends_on:
-      - prometheus
-
 volumes:
   grafana_data:
+

@@ -3,6 +3,7 @@ from src.utils.helper_functions import timer_decorator
 import yaml
 import os
 import re
+import pandas as pd
 import emoji
 
 class DataLoader:

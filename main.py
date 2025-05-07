@@ -10,11 +10,11 @@ from src.features.feature_engineering import FeatureEngineer
 app = FastAPI()
 
 # Load models
-with open("models/random_forest_v1.pkl", "rb") as f:
+with open("models/random_forest_model.pkl", "rb") as f:
     rf_model = pickle.load(f)
 
-bert_model = BertForSequenceClassification.from_pretrained("models/bert_v1")
-bert_tokenizer = BertTokenizer.from_pretrained("models/bert_v1")
+bert_model = BertForSequenceClassification.from_pretrained("models/bert_model")
+bert_tokenizer = BertTokenizer.from_pretrained("models/bert_model")
 
 feature_engineer = FeatureEngineer("config/config.yaml")
 
@@ -34,7 +34,7 @@ async def predict(request: Request, text: str = Form(...)):
 
     # sentiment = "POSITIF" if bert_pred == 2 else "NÉGATIF"
     sentiment = "POSITIF" if bert_pred == 2 else "NEGATIVE" if bert_pred == 1 else "NEUTRE"
-
+    
     return templates.TemplateResponse("index.html", {
         "request": request,
         "prediction": sentiment,
