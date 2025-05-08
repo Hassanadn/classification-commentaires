@@ -10,8 +10,8 @@ from src.features.feature_engineering import FeatureEngineer
 app = FastAPI()
 
 # Load models
-with open("models/random_forest_model.pkl", "rb") as f:
-    rf_model = pickle.load(f)
+# with open("models/random_forest_model.pkl", "rb") as f:
+#     rf_model = pickle.load(f)
 
 bert_model = BertForSequenceClassification.from_pretrained("models/bert_model")
 bert_tokenizer = BertTokenizer.from_pretrained("models/bert_model")

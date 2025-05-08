@@ -45,96 +45,22 @@
 
 
 
-# import os
-# import sys
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-
-# import logging
-# from src.models.bert_model import BertTextClassifier
-# from src.models.random_forest_model import RandomForestTextClassifier
-# from src.data.load_data import DataLoader
-
-# class Main:
-#     def __init__(self, config_path: str):
-#         """
-#         Initialise DataLoader et les deux entraîneurs RF et BERT.
-#         """
-#         if not os.path.exists(config_path):
-#             raise FileNotFoundError(f"Config introuvable : {config_path}")
-#         self.config_path = config_path
-
-#         # 1. Charger les données en chunks
-#         self.data_loader = DataLoader(config_path)
-
-#         # 2. Initialiser l'entraîneur Random Forest
-#         self.rf_trainer = RandomForestTextClassifier(config_path)
-
-#         # 3. Initialiser l'entraîneur BERT
-#         self.bert_trainer = BertTextClassifier(config_path)
-
-#         # Dossiers de sauvegarde
-#         cfg = self.bert_trainer.config  # on suppose que BERT et RF partagent la même config
-#         self.rf_output_dir = cfg['model']['random_forest']['output_dir']
-#         self.bert_output_dir = cfg['model']['bert']['output_dir']
-
-#         os.makedirs(self.rf_output_dir, exist_ok=True)
-#         os.makedirs(self.bert_output_dir, exist_ok=True)
-
-#     def run(self):
-#         """
-#         Pour chaque chunk :
-#          - On entraîne RF dessus
-#          - On entraîne BERT dessus
-#         Enfin on sauvegarde les deux modèles.
-#         """
-#         for i, chunk_df in enumerate(self.data_loader.data_generator(), start=1):
-#             logging.info(f"=== Chunk {i} ===")
-#             # RF
-#             logging.info("🔹 Entraînement RandomForest sur chunk %d", i)
-#             self.rf_trainer.train(chunk_df)
-
-#             # BERT
-#             logging.info("🔹 Entraînement BERT sur chunk %d", i)
-#             self.bert_trainer.train(chunk_df, chunk_num=i)
-
-#         # Sauvegarde finale RF
-#         logging.info("📦 Sauvegarde finale RandomForest dans %s", self.rf_output_dir)
-#         self.rf_trainer.save_model(self.rf_trainer.model, self.rf_output_dir)
-
-#         # Sauvegarde finale BERT
-#         logging.info("📦 Sauvegarde finale BERT dans %s", self.bert_output_dir)
-#         self.bert_trainer.save_model(self.bert_trainer.model, self.bert_output_dir)
-#         self.bert_trainer.feature_engineer.tokenizer.save_pretrained(self.bert_output_dir)
-
-
-# if __name__ == "__main__":
-#     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-#     main = Main(config_path="config/config.yaml")
-#     main.run()
-
-
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+import pandas as pd
 import logging
-import yaml
-import argparse
-from typing import Dict, Any
 
+# Ajoute le dossier racine au sys.path pour les imports relatifs
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
+import logging
 from src.models.bert_model import BertTextClassifier
-from src.models.random_forest_model import RandomForestTextClassifier
 from src.data.load_data import DataLoader
-from src.monitoring.wandb_logger import WandbLogger
-from src.monitoring.log_metrics import MetricsLogger
 
 class Main:
     def __init__(self, config_path: str, wandb_config_path: str = "config/wandb_config.yaml"):
         """
-        Initialise DataLoader et les deux entraîneurs RF et BERT avec intégration wandb.
-        
-        Args:
-            config_path: Chemin vers le fichier de configuration principal
-            wandb_config_path: Chemin vers le fichier de configuration wandb
+        Initialise DataLoader et les deux entraîneurs RF et BERT.
         """
         if not os.path.exists(config_path):
             raise FileNotFoundError(f"Config introuvable : {config_path}")
@@ -157,18 +83,18 @@ class Main:
         
         # 1. Charger les données en chunks
         self.data_loader = DataLoader(config_path)
-        
+
         # 2. Initialiser l'entraîneur Random Forest
         self.rf_trainer = RandomForestTextClassifier(config_path)
-        
+
         # 3. Initialiser l'entraîneur BERT
         self.bert_trainer = BertTextClassifier(config_path)
-        
+
         # Dossiers de sauvegarde
         cfg = self.bert_trainer.config  # on suppose que BERT et RF partagent la même config
         self.rf_output_dir = cfg['model']['random_forest']['output_dir']
         self.bert_output_dir = cfg['model']['bert']['output_dir']
-        
+
         os.makedirs(self.rf_output_dir, exist_ok=True)
         os.makedirs(self.bert_output_dir, exist_ok=True)
         
@@ -203,90 +129,23 @@ class Main:
     def run(self):
         """
         Pour chaque chunk :
-         - On entraîne RF dessus
          - On entraîne BERT dessus
         Enfin on sauvegarde les deux modèles.
-        Tous les métriques sont envoyés à wandb et aux systèmes de monitoring.
         """
-        # Log du dataset si wandb est activé
-        if self.use_wandb:
-            try:
-                dataset_metadata = self.data_loader.get_dataset_metadata()
-                self.wandb_logger.log_dataset(
-                    dataset_path=self.data_loader.config['data']['path'], 
-                    dataset_name='training_dataset',
-                    metadata=dataset_metadata
-                )
-            except Exception as e:
-                logging.warning(f"Échec du logging du dataset dans wandb: {e}")
-        
-        # Traitement des chunks
         for i, chunk_df in enumerate(self.data_loader.data_generator(), start=1):
             logging.info(f"=== Chunk {i} ===")
-            
-            # Log du chunk dans wandb
-            if self.use_wandb:
-                self.wandb_logger.log_metrics({
-                    'chunk': i,
-                    'chunk_size': len(chunk_df)
-                })
-            
-            # Callback pour RF
-            def rf_callback(metrics):
-                metrics_with_chunk = {f"rf_{k}": v for k, v in metrics.items()}
-                metrics_with_chunk['chunk'] = i
-                
-                # Log dans wandb
-                if self.use_wandb:
-                    self.wandb_logger.log_metrics(metrics_with_chunk)
-                
-                # Log dans InfluxDB/Prometheus
-                self.metrics_logger.log_model_metrics(
-                    model_name='random_forest',
-                    metrics=metrics,
-                    version=f"chunk_{i}"
-                )
-                
-            # Callback pour BERT
-            def bert_callback(metrics):
-                metrics_with_chunk = {f"bert_{k}": v for k, v in metrics.items()}
-                metrics_with_chunk['chunk'] = i
-                
-                # Log dans wandb
-                if self.use_wandb:
-                    self.wandb_logger.log_metrics(metrics_with_chunk)
-                
-                # Log dans InfluxDB/Prometheus
-                self.metrics_logger.log_model_metrics(
-                    model_name='bert',
-                    metrics=metrics,
-                    version=f"chunk_{i}"
-                )
-            
             # RF
             logging.info("🔹 Entraînement RandomForest sur chunk %d", i)
-            rf_metrics = self.rf_trainer.train(chunk_df, callback=rf_callback)
-            
+            self.rf_trainer.train(chunk_df)
+
             # BERT
             logging.info("🔹 Entraînement BERT sur chunk %d", i)
-            bert_metrics = self.bert_trainer.train(chunk_df, chunk_num=i, callback=bert_callback)
-            
-            # Feature importance pour RF (si disponible)
-            try:
-                feature_imp = self.rf_trainer.get_feature_importance()
-                if feature_imp and self.use_wandb:
-                    self.wandb_logger.log_metrics({
-                        'feature_importance': feature_imp,
-                        'chunk': i
-                    })
-            except Exception as e:
-                logging.warning(f"Échec de l'extraction d'importance des features: {e}")
-        
+            self.bert_trainer.train(chunk_df, chunk_num=i)
+
         # Sauvegarde finale RF
         logging.info("📦 Sauvegarde finale RandomForest dans %s", self.rf_output_dir)
-        rf_model_path = os.path.join(self.rf_output_dir, "model.pkl")
         self.rf_trainer.save_model(self.rf_trainer.model, self.rf_output_dir)
-        
+
         # Sauvegarde finale BERT
         logging.info("📦 Sauvegarde finale BERT dans %s", self.bert_output_dir)
         bert_model_path = os.path.join(self.bert_output_dir, "model.pt")

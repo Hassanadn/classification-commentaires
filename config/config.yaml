@@ -8,6 +8,7 @@ data:
   output_path: "data/processed/X_train_clean.csv"  # Chemin vers les données d'entraînement nettoyées
   test_size: 0.2  # Proportion des données pour le test (80% pour l'entraînement)
   random_state: 42  # Seed pour la reproductibilité des résultats
+  chunk_size: 1000 
 
 # Paramètres de prétraitement des données
 preprocessing:
@@ -48,11 +49,14 @@ model:
     num_labels: 2                # Nombre de labels pour la classification (2 pour binaire)
     epochs: 3                    # Nombre d'époques d'entraînement
     batch_size: 16               # Taille des lots (batch size)
-    warmup_steps: 0.1            # Pourcentage des étapes d'entraînement pour le warm-up
+    warmup_steps: 0           # Pourcentage des étapes d'entraînement pour le warm-up
     weight_decay: 0.1            # Taux de décroissance du poids pour la régularisation
     save_total_limit: 1          # Nombre maximal de modèles sauvegardés
     logging_steps: 100           # Fréquence des logs pendant l'entraînement
     output_dir: "models/bert_output_dir"  # Dossier où le modèle sera sauvegardé
+    test_size: 0.2 
+    random_state: 42  # Seed pour la reproductibilité des résultats
+    
 
 # Paramètres d'entraînement pour les modèles
 training:
