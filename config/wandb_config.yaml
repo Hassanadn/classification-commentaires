@@ -1,0 +1,11 @@
+wandb:
+  api_key: ${WANDB_API_KEY}  # Sera remplacé par la variable d'environnement
+  project: ${WANDB_PROJECT}
+  entity: ${WANDB_ENTITY}
+  experiment_name: experiment_1
+  tags:
+    - bert
+    - random_forest
+  log_models: true
+  log_datasets: true
+  log_code: true
