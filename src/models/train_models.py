@@ -115,6 +115,10 @@
 
 import os
 import sys
+import pandas as pd
+import logging
+
+# Ajoute le dossier racine au sys.path pour les imports relatifs
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import logging
 import yaml
@@ -122,10 +126,10 @@ import argparse
 from typing import Dict, Any
 
 from src.models.bert_model import BertTextClassifier
-from src.models.random_forest_model import RandomForestTextClassifier
 from src.data.load_data import DataLoader
 from src.monitoring.wandb_logger import WandbLogger
 from src.monitoring.log_metrics import MetricsLogger
+
 
 class Main:
     def __init__(self, config_path: str, wandb_config_path: str = "config/wandb_config.yaml"):
@@ -203,7 +207,6 @@ class Main:
     def run(self):
         """
         Pour chaque chunk :
-         - On entraîne RF dessus
          - On entraîne BERT dessus
         Enfin on sauvegarde les deux modèles.
         Tous les métriques sont envoyés à wandb et aux systèmes de monitoring.
