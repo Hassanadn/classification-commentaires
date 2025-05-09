@@ -1,0 +1,22 @@
+2025-05-09 17:33:11,198 - INFO - load_raw_data took 0.00 seconds
+Colonnes du chunk : Index(['label', 'text'], dtype='object')
+=== Entraînement sur le chunk 1 ===
+
+ Entraînement sur chunk 1
+2025-05-09 17:33:12,591 - INFO - 800 textes transformés en encodages BERT.
+2025-05-09 17:33:12,868 - INFO - 200 textes transformés en encodages BERT.
+You are adding a <class 'transformers.integrations.integration_utils.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+WandbCallback
+Entraînement initial
+[34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|                                                                                  | 0/150 [00:00<?, ?it/s]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+ 33%|███████████████████████▎                                              | 50/150 [09:41<17:26, 10.47s/it]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)                                                                                   
+{'eval_loss': 0.5497925877571106, 'eval_accuracy': 0.84, 'eval_f1': 0.8699186991869918, 'eval_runtime': 36.2269, 'eval_samples_per_second': 5.521, 'eval_steps_per_second': 0.359, 'epoch': 1.0}
+ 67%|██████████████████████████████████████████████                       | 100/150 [20:35<09:13, 11.08s/it]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+{'loss': 0.5179, 'grad_norm': 12.993452072143555, 'learning_rate': 1.7000000000000003e-05, 'epoch': 2.0}
+  warnings.warn(warn_msg)                                                                                   
+{'eval_loss': 0.29221680760383606, 'eval_accuracy': 0.875, 'eval_f1': 0.8878923766816144, 'eval_runtime': 35.2888, 'eval_samples_per_second': 5.668, 'eval_steps_per_second': 0.368, 'epoch': 2.0}
+ 94%|████████████████████████████████████████████████████████████████▊    | 141/150 [30:03<01:53, 12.66s/it]
