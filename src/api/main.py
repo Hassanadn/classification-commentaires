@@ -51,3 +51,7 @@ async def predict(request: Request, text: str = Form(...)):
         "prediction": sentiment,
         "input_text": text
     })
+ #Ajoutez ici la nouvelle route pour l'interface d'administration
+@app.get("/admin", response_class=HTMLResponse)
+async def serve_admin(request: Request):
+    return templates.TemplateResponse("admin.html", {"request": request})
