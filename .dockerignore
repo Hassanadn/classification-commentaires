@@ -1,0 +1,40 @@
+# Ignorer les répertoires et fichiers wandb
+wandb/
+*.wandb
+
+# Ignorer les fichiers Python générés
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ignorer les environnements virtuels
+venv/
+ENV/
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les fichiers de cache
+.cache/
+.pytest_cache/
+
+# Ignorer les modèles sauvegardés (si vous souhaitez les recréer dans le conteneur)
+model/
+*.pkl

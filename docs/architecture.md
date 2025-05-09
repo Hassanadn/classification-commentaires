@@ -1,57 +1,53 @@
+├── .dvc/                              # Métadonnées internes DVC (si utilisé)
 ├── config/                            # Fichiers de configuration
 │   ├── config.yaml                    # Fichier principal de configuration des modèles et pipeline
 │   ├── wandb_config.yaml              # Paramètres pour wandb (API key, nom de projet, etc.)
-│   └── logging.conf                   # Configuration du format et niveau de logging
-
+│   ├── logging.conf                   # Configuration du format et niveau de logging
+│   └── prometheus.yml                 # Configuration de Prometheus (si utilisé)
+│   └── .env                           # Fichier de configuration pour les variables d'environnement wandb 
+│   └── log_config.yaml                # Configuration des logs
 ├── data/                              # Contient les jeux de données
 │   ├── processed/                     # Données nettoyées et transformées
-│   │   └── processed_data.csv         # Exemple de données prêtes à être utilisées
+│   │   └── processed_data.csv
 │   ├── raw/                           # Données brutes originales
-│   │   └── raw_data.csv               # Exemple de données brutes
-
+│   │   └── raw_data.csv
+│   └── logs/                          # Fichier de logs
+│       └── logs.txt
 ├── docs/                              # Documentation technique du projet
-│   └── architecture.md                # Description de l'architecture logicielle et dataflow
-
+│   └── architecture.md
+├── grafana/                           # Tableau de bord Grafana (ex. fichiers JSON si configurés)
 ├── models/                            # Répertoire de sauvegarde des modèles entraînés
-│   ├── bert_model.pkl                 # Modèle BERT entraîné et sérialisé
-│   └── random_forest_model.pkl        # Modèle Random Forest entraîné et sérialisé
-
+│   ├── bert_model.pkl
+│   └── random_forest_model.pkl
 ├── notebooks/                         # Jupyter Notebooks pour exploration et tests
-│   ├── ex.ipynb                       # Notebook d'exploration
-│   └── test_bert.ipynb                # Tests et visualisation avec BERT
-
+│   ├── ex.ipynb
+│   └── test_bert.ipynb
 ├── src/                               # Code source principal
-│   ├── api/                           # Serveur d’API pour exposer les modèles
-│   │   ├── index.html                 # Interface simple
-│   │   └── main.py                    # Point d’entrée de l’API
-
-│   ├── data/                          # Chargement et découpage des données
-│   │   └── load_data.py               # Script de chargement
-
-│   ├── features/                      # Création de nouvelles variables/features
-│   │   ├── feature_engineering/       # Feature engineering spécifique à BERT
-│   │   └── text_processor.py          # Préparation des features pour Random Forest
-
-│   ├── models/                        # Entraînement et abstraction des modèles
-│   │   ├── abstract_text_classification_model.py  # Classe abstraite de base
-│   │   ├── bert_model.py              # Modèle BERT
-│   │   ├── random_forest_model.py     # Modèle Random Forest
-│   │   ├── sentiment_dataset.py       # Préparation du dataset
-│   │   └── train_models.py            # Entraînement des modèles
-
-│   ├── monitoring/                    # Suivi et observabilité
-│   │   ├── log_metrics.py             # Envoi vers InfluxDB / Prometheus
-│   │   └── wandb_logger.py            # Intégration Weights & Biases
-
-│   └── utils/                         # Fonctions réutilisables
-│       ├── helper_functions.py        # Fonctions utiles génériques
-│       └── wandb_utils.py             # Utilitaires wandb
-
-├── .dvc/                              # Métadonnées internes DVC (si utilisé)
-├── .gitignore                         # Fichiers à ignorer dans le repo
-├── dvc.lock                           # Verrouillage des versions DVC
-├── dvc.yaml                           # Pipeline DVC (étapes d’entraînement, prétraitement)
-├── docker-compose.yml                 # Configuration multi-services Docker
-├── dockerfile                         # Image Docker du projet
-├── README.md                          # Description et instructions du projet
-├── requirements.txt                   # Dépendances Python
+│   ├── api/
+│   │   ├── index.html
+│   │   └── main.py
+│   ├── data/
+│   │   └── load_data.py
+│   ├── features/
+│   │   ├── feature_engineering/
+│   │   └── text_processor.py
+│   ├── models/
+│   │   ├── abstract_text_classification_model.py
+│   │   ├── bert_model.py
+│   │   ├── random_forest_model.py
+│   │   ├── sentiment_dataset.py
+│   │   └── train_models.py
+│   ├── monitoring/
+│   │   ├── log_metrics.py
+│   │   └── wandb_logger.py
+│   └── utils/
+│       ├── helper_functions.py
+│       └── wandb_utils.py
+│       └── log_utils.py
+├── .gitignore
+├── dvc.lock
+├── dvc.yaml
+├── docker-compose.yml
+├── dockerfile
+├── README.md
+├── requirements.txt

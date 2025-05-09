@@ -1,0 +1,11 @@
+# wandb:
+wandb:
+  entity: "abdellahelatrach20-sultan-moulay-slimane-university"
+  project: "classification-commentaires"  
+  experiment_name: experiment_1
+  tags:
+    - bert
+    - random_forest
+  log_models: true
+  log_datasets: true
+  log_code: true
