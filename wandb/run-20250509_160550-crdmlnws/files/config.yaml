@@ -1,0 +1,38 @@
+_wandb:
+    value:
+        cli_version: 0.19.11
+        m: []
+        python_version: 3.10.11
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 53
+                - 55
+                - 71
+                - 105
+            "3":
+                - 13
+                - 15
+                - 16
+                - 23
+                - 55
+            "4": 3.10.11
+            "5": 0.19.11
+            "6": 4.51.3
+            "8":
+                - 3
+                - 5
+            "12": 0.19.11
+            "13": windows-amd64
+wandb:
+    value:
+        api_key: ${WANDB_API_KEY}
+        entity: ${WANDB_ENTITY}
+        experiment_name: experiment_1
+        project: ${WANDB_PROJECT}
+        tags:
+            - bert
+            - random_forest
