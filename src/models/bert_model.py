@@ -29,10 +29,17 @@ def compute_metrics(eval_pred):
     predictions = np.argmax(logits, axis=-1)
     acc = accuracy_score(labels, predictions)
     f1 = f1_score(labels, predictions)
+    rcall = f1_score(labels, predictions, average='macro')
+    precision = f1_score(labels, predictions, average='micro')
+
     return {
         'accuracy': acc,
-        'f1': f1
+        'f1': f1,
+        
+        
     }
+
+
 
 # Définition du classifieur BERT personnalisé
 class BertTextClassifier(TextClassificationModel):
