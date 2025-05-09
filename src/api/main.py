@@ -1,11 +1,16 @@
+import os 
+import sys 
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from transformers import BertForSequenceClassification, BertTokenizer
-import pickle
 import numpy as np
+
 from src.features.feature_engineering import FeatureEngineer
+
+# from  import FeatureEngineer
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 app = FastAPI()
 
