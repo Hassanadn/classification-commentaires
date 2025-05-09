@@ -14,7 +14,8 @@ services:
       - ./.env
     environment:
       - PYTHONPATH=/app
-    command: ["python", "src/api/main.py"]
+    # command: ["python", "src/api/main.py"]
+    command: ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     volumes:
       - ./:/app
       - wandb_data:/app/models/wandb
