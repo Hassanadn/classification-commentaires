@@ -1,0 +1,43 @@
+2025-05-09 14:52:00,759 - INFO - load_raw_data took 0.00 seconds
+Colonnes du chunk : Index(['label', 'text'], dtype='object')
+=== Entraînement sur le chunk 1 ===
+
+ Entraînement sur chunk 1
+2025-05-09 14:52:02,132 - INFO - 800 textes transformés en encodages BERT.
+2025-05-09 14:52:02,394 - INFO - 200 textes transformés en encodages BERT.
+You are adding a <class 'transformers.integrations.integration_utils.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+WandbCallback
+Entraînement initial
+[34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|                                                                                              | 0/150 [00:00<?, ?it/s]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+ 33%|████████████████████████████▎                                                        | 50/150 [08:03<18:43, 11.24s/it]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)                                                                                                  
+{'eval_loss': 0.2864747941493988, 'eval_accuracy': 0.91, 'eval_f1': 0.9181818181818182, 'eval_runtime': 36.9462, 'eval_samples_per_second': 5.413, 'eval_steps_per_second': 0.352, 'epoch': 1.0}
+ 67%|████████████████████████████████████████████████████████                            | 100/150 [18:54<10:25, 12.51s/it]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+{'loss': 0.3458, 'grad_norm': 7.500698089599609, 'learning_rate': 1.7000000000000003e-05, 'epoch': 2.0}
+  warnings.warn(warn_msg)                                                                                                  
+{'eval_loss': 0.29624471068382263, 'eval_accuracy': 0.905, 'eval_f1': 0.9140271493212669, 'eval_runtime': 37.9953, 'eval_samples_per_second': 5.264, 'eval_steps_per_second': 0.342, 'epoch': 2.0}
+100%|████████████████████████████████████████████████████████████████████████████████████| 150/150 [28:35<00:00, 11.44s/it]
+C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+{'eval_loss': 0.36037757992744446, 'eval_accuracy': 0.9, 'eval_f1': 0.911504424778761, 'eval_runtime': 34.1738, 'eval_samples_per_second': 5.852, 'eval_steps_per_second': 0.38, 'epoch': 3.0}
+{'train_runtime': 1715.0599, 'train_samples_per_second': 1.399, 'train_steps_per_second': 0.087, 'train_loss': 0.2567787186304728, 'epoch': 3.0}
+  warnings.warn(warn_msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████| 13/13 [00:30<00:00,  2.32s/it]
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 226, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 220, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 104, in train
+    self.text_processor.bert_tokenizer.save_pretrained(self.output_dir)
+AttributeError: 'BertTextClassifier' object has no attribute 'text_processor'
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 226, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 220, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 104, in train
+    self.text_processor.bert_tokenizer.save_pretrained(self.output_dir)
+AttributeError: 'BertTextClassifier' object has no attribute 'text_processor'
