@@ -1,0 +1,75 @@
+2025-05-09 15:41:56,110 - INFO - load_raw_data took 0.00 seconds
+Colonnes du chunk : Index(['label', 'text'], dtype='object')
+=== Entraînement sur le chunk 1 ===
+
+ Entraînement sur chunk 1
+2025-05-09 15:41:57,963 - INFO - 800 textes transformés en encodages BERT.
+2025-05-09 15:41:58,243 - INFO - 200 textes transformés en encodages BERT.
+You are adding a <class 'transformers.integrations.integration_utils.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+WandbCallback
+Entraînement initial
+[34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|                                                                                              | 0/150 [00:00<?, ?it/s]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+ 33%|████████████████████████████▎                                                        | 50/150 [08:47<21:09, 12.70s/it]C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)                                                                                                  
+{'eval_loss': 0.3012397885322571, 'eval_accuracy': 0.875, 'eval_f1': 0.8908296943231441, 'eval_runtime': 35.7305, 'eval_samples_per_second': 5.597, 'eval_steps_per_second': 0.364, 'epoch': 1.0}
+ 46%|███████████████████████████████████████                                              | 69/150 [12:24<19:01, 14.09s/it]Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 226, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 220, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 94, in train
+    # Création du trainer Hugging Face
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 2245, in train
+    return inner_training_loop(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 2560, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 3782, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\accelerate\accelerator.py", line 2454, in backward
+    loss.backward(**kwargs)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\autograd\__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\autograd\graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 226, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 220, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 94, in train
+    # Création du trainer Hugging Face
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 2245, in train
+    return inner_training_loop(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 2560, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 3782, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\accelerate\accelerator.py", line 2454, in backward
+    loss.backward(**kwargs)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\autograd\__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\torch\autograd\graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x0000020F7EBCC3A0>
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\wandb\sdk\lib\service_connection.py", line 94, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\wandb\sdk\lib\service_connection.py", line 226, in teardown
+    self._router.join()
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\wandb\sdk\interface\router.py", line 75, in join
+    self._thread.join()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1096, in join
+    self._wait_for_tstate_lock()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1116, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt:
+[0m
