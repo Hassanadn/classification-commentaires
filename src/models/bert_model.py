@@ -15,6 +15,7 @@ global_metrics = []
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
+
     acc = accuracy_score(labels, predictions)
     f1 = f1_score(labels, predictions)
     return {
