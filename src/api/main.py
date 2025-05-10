@@ -31,7 +31,7 @@ feature_engineer = FeatureEngineer("config/config.yaml")
 # Route d'accueil (page HTML)
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("admin.html", {"request": request})
 
 # Route de prédiction
 @app.post("/predict", response_class=HTMLResponse)
