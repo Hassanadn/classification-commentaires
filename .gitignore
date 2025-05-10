@@ -45,7 +45,7 @@ logs/
 .mlflow/
 
 # Fichiers d'environnement et secrets
-.env
+# .env
 
 # Dossiers d'IDE
 .idea/
