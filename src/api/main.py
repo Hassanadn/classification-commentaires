@@ -83,7 +83,9 @@ from src.features.feature_engineering import FeatureEngineer
 app = FastAPI()
 
 # Exposition des métriques Prometheus
-Instrumentator().instrument(app).expose(app)
+# Instrumentator().instrument(app).expose(app)
+Instrumentator().instrument(app).expose(app, endpoint="/metrics", include_in_schema=False)
+
 
 # Initialisation du moteur de templates
 templates = Jinja2Templates(directory="src/api")

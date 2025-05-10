@@ -89,7 +89,7 @@ class BertTextClassifier(TextClassificationModel):
             per_device_eval_batch_size=self.config['model']['bert']['batch_size'],
             warmup_steps=self.config['model']['bert']['warmup_steps'],
             weight_decay=self.config['model']['bert']['weight_decay'],
-            eval_strategy="epoch",
+            evaluation_strategy="epoch",
             save_strategy="epoch",
             load_best_model_at_end=True,
             metric_for_best_model="accuracy",
