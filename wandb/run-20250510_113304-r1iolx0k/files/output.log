@@ -1,0 +1,31 @@
+2025-05-10 11:33:08,408 - INFO - load_raw_data took 0.00 seconds
+Colonnes du chunk : Index(['label', 'text'], dtype='object')
+=== Entraînement sur le chunk 1 ===
+
+ Entraînement sur chunk 1
+2025-05-10 11:33:15,242 - INFO - 800 textes transformés en encodages BERT.
+2025-05-10 11:33:16,711 - INFO - 200 textes transformés en encodages BERT.
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 27, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 21, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 103, in train
+    trainer = Trainer(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 342, in __init__
+    self.create_accelerator_and_postprocess()
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 3925, in create_accelerator_and_postprocess
+    self.accelerator = Accelerator(
+TypeError: Accelerator.__init__() got an unexpected keyword argument 'dispatch_batches'
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 27, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 21, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 103, in train
+    trainer = Trainer(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 342, in __init__
+    self.create_accelerator_and_postprocess()
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 3925, in create_accelerator_and_postprocess
+    self.accelerator = Accelerator(
+TypeError: Accelerator.__init__() got an unexpected keyword argument 'dispatch_batches'

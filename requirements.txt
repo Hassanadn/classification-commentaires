@@ -40,7 +40,7 @@ beautifulsoup4==4.12.3
 
 # Frameworks ML/NLP
 torch==2.1.2
-transformers==4.35.2
+transformers==4.39.3
 # tensorflow==2.14.0  # Uncomment if TensorFlow is needed
 
 # MLOps
