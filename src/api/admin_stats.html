@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Espace Admin</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-weight: 700;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .action-selection {
+            margin-bottom: 20px;
+        }
+        
+        .action-selection label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .action-selection input[type="radio"] {
+            accent-color: #ff6600;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .dashboard-section h2 {
+            font-weight: 700;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        label[for="filterType"],
+        label[for="pageNumber"] {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        select,
+        input[type="number"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        
+        .pagination-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 300px;
+        }
+        
+        .pagination-controls button {
+            background-color: #ff6600;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 10px 16px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .pagination-controls button:hover {
+            background-color: #e65c00;
+        }
+        
+        .pagination-controls input[type="number"] {
+            flex: 1;
+            text-align: center;
+            border-radius: 8px;
+            border: none;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-size: 1em;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bienvenue dans l'espace Admin !</h1>
+    <h3> choisissier une action</h3>
+
+    <div class="action-selection">
+        <label>
+            <input type="radio" name="adminAction" value="dashboard" checked />
+            Tableau de bord
+        </label>
+        <label>
+            <input type="radio" name="adminAction" value="stats" />
+            Analyse des statistiques
+        </label>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>Tableau de bord des avis 📊</h2>
+
+        <label for="filterType">Filtrer par type d'avis</label>
+        <select id="filterType" name="filterType">
+            <option value="all">Tous</option>
+            <option value="positif">Positifs</option>
+            <option value="negatif">Négatifs</option>
+            <option value="neutre">Neutres</option>
+        </select>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterSelect = document.getElementById('filterType');
+            if (filterSelect) {
+                filterSelect.addEventListener('change', function() {
+                    const selectedValue = this.value;
+                    // Rediriger vers la page filtrée avec le paramètre type
+                    window.location.href = `/dashboard_filtered?type=${encodeURIComponent(selectedValue)}`;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

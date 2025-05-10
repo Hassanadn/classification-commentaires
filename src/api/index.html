@@ -12,30 +12,57 @@
             max-width: 900px;
             margin: 40px auto;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         h1 {
+            margin-bottom: 10px;
             text-align: center;
-            margin-bottom: 20px;
         }
         
         p.description {
-            text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 1.1em;
             color: #bbbbbb;
+            text-align: center;
+        }
+        
+        .main-content {
+            display: flex;
+            width: 100%;
+            max-width: 900px;
+            gap: 30px;
+        }
+        
+        .user-type {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 100px;
+            justify-content: flex-start;
+        }
+        
+        .user-type label {
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .input-group {
             flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 15px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
         
         label {
@@ -53,21 +80,22 @@
             font-size: 1em;
             min-height: 80px;
             resize: vertical;
+            width: 100%;
         }
         
         .output {
-            display: flex;
-            align-items: center;
+            display: block;
+            margin-top: 10px;
+            min-height: 60px;
         }
         
         .buttons {
             display: flex;
             gap: 10px;
-            justify-content: center;
+            margin-top: 10px;
         }
         
         button {
-            flex: 1;
             padding: 12px 0;
             font-size: 1em;
             border: none;
@@ -75,6 +103,7 @@
             cursor: pointer;
             color: white;
             transition: background-color 0.3s ease;
+            flex: 1;
         }
         
         button.clear {
@@ -87,34 +116,11 @@
         
         button.submit {
             background-color: #ff6600;
+            flex: 2;
         }
         
         button.submit:hover {
             background-color: #e65c00;
-        }
-        
-        button.flag {
-            background-color: #555555;
-        }
-        
-        button.flag:hover {
-            background-color: #777777;
-        }
-        
-        .admin-link {
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .admin-link a {
-            color: #ff6600;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        
-        .admin-link a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -122,35 +128,53 @@
 <body>
     <h1>Analyse des Sentiments</h1>
     <p class="description">Entrez un avis pour déterminer s'il est positif, négatif ou neutre.</p>
-    <form method="post" action="/predict" id="sentiment-form">
-        <div class="container">
+
+    <div class="main-content">
+        <div class="user-type">
+            <label>
+                <input type="radio" name="userType" value="client" checked onchange="handleUserTypeChange(this.value)" />
+                Client
+            </label>
+            <label>
+                <input type="radio" name="userType" value="admin" onchange="handleUserTypeChange(this.value)" />
+                Admin
+            </label>
+        </div>
+
+        <form method="post" action="/predict" id="sentiment-form" class="container">
             <div class="input-group">
                 <label for="text">Review</label>
                 <textarea id="text" name="text" placeholder="Entrez votre avis ici...">{{ input_text or "" }}</textarea>
-            </div>
-            <div class="input-group">
-                <label for="output">Output</label>
+                <div class="buttons">
+                    <button type="submit" class="submit">Submit</button>
+                </div>
                 <div id="output" class="output">{{ prediction or "" }}</div>
             </div>
-        </div>
-        <div class="buttons">
-            <button type="button" class="clear" onclick="clearForm()">Clear</button>
-            <button type="submit" class="submit">Submit</button>
-            <button type="button" class="flag" onclick="flagReview()">Flag</button>
-        </div>
-    </form>
-    <div class="admin-link">
-        <a href="/admin">Accéder à l'interface d'administration</a>
+        </form>
     </div>
+
     <script>
         function clearForm() {
             document.getElementById('text').value = '';
             document.getElementById('output').textContent = '';
         }
 
-        function flagReview() {
-            alert('Fonctionnalité de signalement non encore implémentée.');
+        function handleUserTypeChange(value) {
+            if (value === 'admin') {
+                window.location.href = '/admin';
+            } else {
+                document.getElementById('sentiment-form').style.display = 'block';
+            }
         }
+
+        window.onload = function() {
+            const selected = document.querySelector('input[name="userType"]:checked').value;
+            if (selected === 'client') {
+                document.getElementById('sentiment-form').style.display = 'block';
+            } else {
+                document.getElementById('sentiment-form').style.display = 'none';
+            }
+        };
     </script>
 </body>
 
