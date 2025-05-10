@@ -2,6 +2,8 @@
 wandb/
 *.wandb
 
+.git
+
 # Ignorer les fichiers Python générés
 __pycache__/
 *.py[cod]
