@@ -1,0 +1,31 @@
+{
+  "os": "Windows-10-10.0.26100-SP0",
+  "python": "CPython 3.10.11",
+  "startedAt": "2025-05-12T13:32:58.905179Z",
+  "program": "C:\\Users\\user\\OneDrive\\Desktop\\MD3S-FP\\Semester 1\\Python Av\\Workspace python\\classification-commentaires\\src\\models\\train_models.py",
+  "codePath": "src\\models\\train_models.py",
+  "git": {
+    "remote": "https://github.com/Hassanadn/classification-commentaires.git",
+    "commit": "6c3de84cfc56f6e4ab0c9cb70cd1b173b1645490"
+  },
+  "email": "abdellahelatrach20@gmail.com",
+  "root": "C:\\Users\\user\\OneDrive\\Desktop\\MD3S-FP\\Semester 1\\Python Av\\Workspace python\\classification-commentaires",
+  "host": "DESKTOP-A7RVI2I",
+  "executable": "C:\\Users\\user\\OneDrive\\Desktop\\MD3S-FP\\Semester 1\\Python Av\\Workspace python\\classification-commentaires\\.venv\\scripts\\python.exe",
+  "codePathLocal": "src\\models\\train_models.py",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "425503748096",
+      "used": "275591733248"
+    }
+  },
+  "memory": {
+    "total": "16868499456"
+  },
+  "cpu": {
+    "count": 4,
+    "countLogical": 8
+  }
+}

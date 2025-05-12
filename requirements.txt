@@ -1,66 +1,52 @@
-# # Data Science et ML
-# pandas>=2.1.0
-# numpy>=1.26.0
-# scikit-learn>=1.3.2
-# transformers>=4.35.0
-# tensorflow>=2.0
-# torch==2.1.2
-# nltk>=3.6.2
-# joblib>=1.1.0
-# beautifulsoup4>=4.10.0
+###########################################
+#         LIBRAIRIES DATA SCIENCE         #
+###########################################
+numpy==1.25.2                 # Compatible avec torch 2.1.2 et tensorflow
+pandas==2.1.4                 # Analyse de données tabulaires
+scikit-learn==1.3.2           # Modèles ML classiques : SVM, RandomForest, etc.
+nltk==3.8.1                   # Traitement du langage naturel
+joblib==1.4.2                 # Sauvegarde et chargement de modèles
+beautifulsoup4==4.12.3        # Analyse HTML pour le web scraping
 
-# # MLOps
-# dvc>=3.30.1
+###########################################
+#     FRAMEWORKS DE DEEP LEARNING / NLP   #
+###########################################
+torch==2.1.2                  # PyTorch pour le deep learning
+transformers==4.39.3          # Modèles NLP de Hugging Face
+accelerate==0.29.3            # Support multi-GPU/TPU pour transformers
+# tensorflow==2.14.0          # (Décommenter si besoin de TensorFlow)
 
-# # API et Web
-# fastapi>=0.105.0
-# starlette>=0.27.0
-# jinja2>=3.1.2
-# uvicorn>=0.25.0
-# pydantic>=2.6.0
+###########################################
+#               MLOps / DVC               #
+###########################################
+dvc==3.30.1                   # Data Version Control (MLOps & pipelines)
 
-# # Sécurité
-# python-jose>=3.4.0
-# passlib>=1.7.4
-# python-multipart>=0.0.6
+###########################################
+#         API / WEB (FastAPI stack)       #
+###########################################
+fastapi==0.110.0              # Framework web async pour APIs RESTful
+starlette==0.36.3             # Core ASGI utilisé par FastAPI
+jinja2==3.1.4                 # Templates HTML côté serveur
+uvicorn==0.25.0               # Serveur ASGI performant
+pydantic==2.6.4               # Validation et typage de données
 
-# # Utilitaires
-# python-dotenv>=1.0.0
+###########################################
+#            SÉCURITÉ (JWT etc.)          #
+###########################################
+python-jose==3.4.0            # Authentification par JSON Web Tokens (JWT)
+passlib==1.7.4                # Hachage sécurisé des mots de passe
+python-multipart==0.0.9       # Support de multipart/form-data (upload)
 
-# # Monitoring
-# prometheus-client>=0.18.0
+###########################################
+#           VARIABLES D’ENVIRONNEMENT     #
+###########################################
+python-dotenv==1.0.1          # Chargement de .env pour config sécurisée
 
-# Data Science et ML
-numpy==1.25.2  # Compatible with torch 2.1.2 and tensorflow
-pandas==2.1.4
-scikit-learn==1.3.2
-nltk==3.8.1
-joblib==1.4.2
-beautifulsoup4==4.12.3
+###########################################
+#            MONITORING & METRICS         #
+###########################################
+prometheus-client==0.18.0     # Client Prometheus pour exposer des métriques
+prometheus-fastapi-instrumentator==7.1.0  # Intégration Prometheus avec FastAPI
 
-# Frameworks ML/NLP
-torch==2.1.2
-transformers==4.39.3
-# tensorflow==2.14.0  # Uncomment if TensorFlow is needed
-
-# MLOps
-dvc==3.30.1
-
-# API et Web (versions compatibles entre elles)
-fastapi==0.110.0
-starlette==0.36.3
-jinja2==3.1.4
-uvicorn==0.25.0
-pydantic==2.6.4
-
-# Sécurité
-python-jose==3.4.0
-passlib==1.7.4
-python-multipart==0.0.9
-
-# Utilitaires
-python-dotenv==1.0.1
-
-# Monitoring
-prometheus-client==0.18.0
-prometheus-fastapi-instrumentator==7.1.0
+# 🔽 Optionnel : pipdeptree pour debug des dépendances
+# pipdeptree==2.13.0          # (à installer manuellement si besoin de debug)
