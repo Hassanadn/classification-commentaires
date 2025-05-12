@@ -41,7 +41,6 @@ def compute_metrics(eval_pred):
     }
 
 
-
 # Définition du classifieur BERT personnalisé
 class BertTextClassifier(TextClassificationModel):
     def __init__(self, config_path):

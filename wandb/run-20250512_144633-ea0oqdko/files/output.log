@@ -1,0 +1,21 @@
+2025-05-12 14:46:35,035 - INFO - load_raw_data took 0.00 seconds
+Colonnes du chunk : Index(['label', 'text'], dtype='object')
+=== Entraînement sur le chunk 1 ===
+
+ Entraînement sur chunk 1
+2025-05-12 14:46:38,326 - INFO - 800 textes transformés en encodages BERT.
+2025-05-12 14:46:38,559 - INFO - 200 textes transformés en encodages BERT.
+C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\accelerate\accelerator.py:436: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches', 'even_batches', 'use_seedable_sampler']). Please pass an `accelerate.DataLoaderConfiguration` instead:
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False, even_batches=True, use_seedable_sampler=True)
+  warnings.warn(
+You are adding a <class 'transformers.integrations.integration_utils.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+WandbCallback
+Entraînement initial
+100%|████████████████████████████████████████████████████████████████████████| 150/150 [1:03:34<00:00, 25.43s/it]
+100%|████████████████████████████████████████████████████████████████████████████| 13/13 [00:48<00:00,  3.73s/it]
+{'eval_loss': 0.3213503360748291, 'eval_accuracy': 0.875, 'eval_f1': 0.8945147679324895, 'eval_runtime': 92.3497, 'eval_samples_per_second': 2.166, 'eval_steps_per_second': 0.141, 'epoch': 1.0}
+{'loss': 0.4108, 'grad_norm': 9.592928886413574, 'learning_rate': 1.6666666666666667e-05, 'epoch': 2.0}
+{'eval_loss': 0.2948746383190155, 'eval_accuracy': 0.91, 'eval_f1': 0.9166666666666666, 'eval_runtime': 39.3197, 'eval_samples_per_second': 5.087, 'eval_steps_per_second': 0.331, 'epoch': 2.0}
+{'eval_loss': 0.3256801664829254, 'eval_accuracy': 0.9, 'eval_f1': 0.911504424778761, 'eval_runtime': 53.4453, 'eval_samples_per_second': 3.742, 'eval_steps_per_second': 0.243, 'epoch': 3.0}
+{'train_runtime': 3814.5215, 'train_samples_per_second': 0.629, 'train_steps_per_second': 0.039, 'train_loss': 0.2977072604497274, 'epoch': 3.0}

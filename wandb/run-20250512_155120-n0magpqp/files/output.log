@@ -1,0 +1,39 @@
+100%|██████████████████████████████████████████████████████████████████████████| 150/150 [46:07<00:00, 16.66s/it]Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 27, in <module>
+{'eval_loss': 0.421357661485672, 'eval_accuracy': 0.83, 'eval_f1': 0.7976190476190476, 'eval_runtime': 51.8768, 'eval_samples_per_second': 3.855, 'eval_steps_per_second': 0.251, 'epoch': 1.0}
+{'loss': 0.2601, 'grad_norm': 7.444806098937988, 'learning_rate': 1.6666666666666667e-05, 'epoch': 2.0}
+{'eval_loss': 0.43886756896972656, 'eval_accuracy': 0.885, 'eval_f1': 0.883248730964467, 'eval_runtime': 57.6766, 'eval_samples_per_second': 3.468, 'eval_steps_per_second': 0.225, 'epoch': 2.0}
+{'eval_loss': 0.46487531065940857, 'eval_accuracy': 0.875, 'eval_f1': 0.8691099476439791, 'eval_runtime': 72.8612, 'eval_samples_per_second': 2.745, 'eval_steps_per_second': 0.178, 'epoch': 3.0}
+{'train_runtime': 2768.3202, 'train_samples_per_second': 0.867, 'train_steps_per_second': 0.054, 'train_loss': 0.18789951324462892, 'epoch': 3.0}
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 21, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 121, in train
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 1780, in train
+    return inner_training_loop(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 2273, in _inner_training_loop
+    shutil.rmtree(checkpoint)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\shutil.py", line 750, in rmtree
+    return _rmtree_unsafe(path, onerror)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\shutil.py", line 620, in _rmtree_unsafe
+    onerror(os.unlink, fullname, sys.exc_info())
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\shutil.py", line 618, in _rmtree_unsafe
+    os.unlink(fullname)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'models\\bert_output_dir\\checkpoint-50\\model.safetensors'
+Traceback (most recent call last):
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 27, in <module>
+    train_models(config_path)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\train_models.py", line 21, in train_models
+    bert_classifier.train(chunk_df, chunk_num=i+1)
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\src\models\bert_model.py", line 121, in train
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 1780, in train
+    return inner_training_loop(
+  File "C:\Users\user\OneDrive\Desktop\MD3S-FP\Semester 1\Python Av\Workspace python\classification-commentaires\.venv\lib\site-packages\transformers\trainer.py", line 2273, in _inner_training_loop
+    shutil.rmtree(checkpoint)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\shutil.py", line 750, in rmtree
+    return _rmtree_unsafe(path, onerror)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\shutil.py", line 620, in _rmtree_unsafe
+    onerror(os.unlink, fullname, sys.exc_info())
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\shutil.py", line 618, in _rmtree_unsafe
+    os.unlink(fullname)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'models\\bert_output_dir\\checkpoint-50\\model.safetensors'
