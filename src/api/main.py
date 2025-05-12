@@ -97,6 +97,9 @@ bert_tokenizer = BertTokenizer.from_pretrained("models/bert_model")
 # Initialisation du FeatureEngineer
 feature_engineer = FeatureEngineer("config/config.yaml")
 
+app.mount("/static", StaticFiles(directory="src/api/static"), name="static")
+
+
 # Route d'accueil (page HTML)
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
