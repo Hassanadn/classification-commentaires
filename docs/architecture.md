@@ -22,7 +22,7 @@
 │   └── 📜datasource.yml
 │
 ├── 📂models/
-│   └── 📜bert_model.pkl
+│   └── 📜bert_model/
 │
 ├── 📂notebooks/
 │   └── 📜test_bert.ipynb
