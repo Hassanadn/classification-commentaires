@@ -35,6 +35,7 @@ data/**
 models/**
 !models/
 !models/**/*.dvc
+dvc.json
 
 # Fichiers spécifiques de datasets si besoin
 /test.csv
