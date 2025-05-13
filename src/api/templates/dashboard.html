@@ -129,7 +129,7 @@
         </select>
     </div>
     <footer>
-        <a href="http://localhost:3000/dashboards" class="back-btn">Visualisation en Grafana</a>
+        <a href="http://localhost:3000/dashboards" class="back-btn" target="_blank">Visualisation en Grafana</a>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -138,7 +138,7 @@
                 filterSelect.addEventListener('change', function() {
                     const selectedValue = this.value;
                     // Rediriger vers la page filtrée avec le paramètre type
-                    window.location.href = `/dashboard_filtered?type=${encodeURIComponent(selectedValue)}`;
+                    window.location.href = `/filtered_dash?type=${encodeURIComponent(selectedValue)}`;
                 });
             }
         });
