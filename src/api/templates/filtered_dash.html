@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tableau de bord filtré</title>
+    <link rel="icon" type="image/x-icon" href="../utils/sentiment-analysis.ico">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-weight: 700;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th,
+        td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #222;
+        }
+        
+        button.delete-btn {
+            background-color: #cc0000;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        button.delete-btn:hover {
+            background-color: #ff3333;
+        }
+        
+        .back-btn {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tableau de bord filtré</h1>
+    <button class="back-btn" onclick="window.history.back()">← Retour</button>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User ID</th>
+                <th>Avis</th>
+                <th>Sentiment</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comment in comments %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ comment.user_id if comment.user_id else 'N/A' }}</td>
+                <td>{{ comment.text }}</td>
+                <td>{{ comment.sentiment }}</td>
+                <td><button class="delete-btn" data-id="{{ comment.id }}">Supprimer</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('button.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const commentId = this.getAttribute('data-id');
+                    if (confirm('Voulez-vous vraiment supprimer ce commentaire ?')) {
+                        try {
+                            const response = await fetch(`/comments/${commentId}`, {
+                                method: 'DELETE'
+                            });
+                            const result = await response.json();
+                            alert(result.message);
+                            if (response.ok) {
+                                // Supprimer la ligne du tableau
+                                this.closest('tr').remove();
+                            }
+                        } catch (error) {
+                            alert('Erreur lors de la suppression du commentaire.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
