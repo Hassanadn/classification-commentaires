@@ -19,6 +19,8 @@ services:
     volumes:
       - ./:/app
       - wandb_data:/app/models/wandb
+
+
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -38,6 +40,8 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
+
+      
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest
     ports:
@@ -47,31 +51,6 @@ services:
     environment:
       - MLFLOW_TRACKING_URI=http://localhost:5000
     command: mlflow server --host 0.0.0.0 --port 5000
-  
-
-  # model_training:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.train
-  #   container_name: model_training
-  #   env_file:
-  #     - ./config/.env
-  #   environment:
-  #     - PYTHONPATH=/app
-  #     - WANDB_MODE=online
-  #     - PROMETHEUS_PUSHGATEWAY=prometheus_pushgateway:9091
-  #   volumes:
-  #     - wandb_data:/app/models/wandb
-  #   networks:
-  #     - monitoring_network
-  #   depends_on:
-  #     - prometheus
-
-
 
 volumes:
   wandb_data:
-
-# networks:
-#   monitoring_network:
-#     driver: bridge
