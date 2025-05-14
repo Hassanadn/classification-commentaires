@@ -50,3 +50,8 @@ prometheus-fastapi-instrumentator==7.1.0  # Intégration Prometheus avec FastAPI
 
 # 🔽 Optionnel : pipdeptree pour debug des dépendances
 # pipdeptree==2.13.0          # (à installer manuellement si besoin de debug)
+
+
+aiosqlite==0.21.0
+databases==0.9.0
+sqlalchemy==2.0.40

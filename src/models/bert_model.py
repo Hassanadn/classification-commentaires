@@ -1,5 +1,6 @@
 # Importation des bibliothèques nécessaires
 import os
+from typing import Tuple, Any, Dict
 import numpy as np
 import pandas as pd
 
@@ -24,7 +25,7 @@ import wandb
 global_metrics = []
 
 # Fonction pour calculer les métriques d'évaluation
-def compute_metrics(eval_pred):
+def compute_metrics(eval_pred: Tuple[np.ndarray, np.ndarray]) -> Dict[str, float]:
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
 
@@ -35,15 +36,13 @@ def compute_metrics(eval_pred):
 
     return {
         'accuracy': acc,
-        'f1': f1,
-        
-        
+        'f1': f1        
     }
 
 
 # Définition du classifieur BERT personnalisé
 class BertTextClassifier(TextClassificationModel):
-    def __init__(self, config_path):
+    def __init__(self, config_path: str) -> None:
         super().__init__(config_path)
         # Chargement des paramètres depuis le fichier de configuration
         self.model_name = self.config['model']['bert']['model_name']
@@ -61,7 +60,7 @@ class BertTextClassifier(TextClassificationModel):
         self.wandb_logger = WandbLogger("config/wandb_config.yaml")
 
     # Méthode d’entraînement sur un chunk de données
-    def train(self, df, chunk_num):
+    def train(self, df: pd.DataFrame, chunk_num: int) -> None:
         print(f"\n Entraînement sur chunk {chunk_num}")
 
         # Division des données en jeu d’entraînement et de validation
@@ -135,7 +134,7 @@ class BertTextClassifier(TextClassificationModel):
         self.wandb_logger.finish()
     
     # Méthode pour sauvegarder le modèle à un chemin spécifique
-    def save_model(self, path: str):
+    def save_model(self, path: str) -> None:
         """Save BERT model and tokenizer."""
         self.model.save_pretrained(path)
         self.feature_engineer.bert_tokenizer.save_pretrained(path)
