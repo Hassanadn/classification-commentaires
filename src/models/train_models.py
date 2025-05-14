@@ -5,7 +5,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')
 import pandas as pd
 from src.data.load_data import DataLoader
 from src.models.bert_model import BertTextClassifier
-from src.models.random_forest_model import RandomForest
 
 def train_models(config_path: str):
     """Train both Random Forest and BERT models."""
