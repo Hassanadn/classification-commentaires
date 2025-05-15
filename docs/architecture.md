@@ -1,71 +1,88 @@
 📦Classification-Commentaire
-├── 📂.dvc/
-├── 📂config/
-│   ├── 📜config.yaml
-│   ├── 📜wandb_config.yaml
-│   ├── 📜logging.conf
-│   └── 📜prometheus.yml
 │
-├── 📂data/
-│   ├── 📂processed/
-│   │   └── 📜processed_data.csv
-│   └── 📂raw/
-│       ├── 📜test.csv
-│       ├── 📜test.csv.dvc
-│       ├── 📜train.csv
-│       └── 📜train.csv.dvc
+├── 📂.dvc/                               # Dossier de configuration Data Version Control
+├── 📂config/                             # Configuration du projet
+│   ├── 📜config.yaml                     # Configuration générale
+│   ├── 📜wandb_config.yaml               # Configuration Weights & Biases
+│   ├── 📜logging.conf                    # Configuration des logs
+│   └── 📜prometheus.yml                  # Configuration Prometheus pour monitoring
 │
-├── 📂docs/
-│   └── 📜architecture.md
+├── 📂data/                               # Données du projet
+│   ├── 📂processed/                      # Données prétraitées
+│   │   └── 📜processed_data.csv          # Données après traitement
+│   └── 📂raw/                            # Données brutes
+│       ├── 📜test.csv                    # Données de test
+│       ├── 📜test.csv.dvc                # Fichier DVC pour données de test
+│       ├── 📜train.csv                   # Données d'entraînement
+│       └── 📜train.csv.dvc               # Fichier DVC pour données d'entraînement
 │
-├── 📂grafana/provisioning/
-│   └── 📜datasource.yml
+├── 📂docs/                               # Documentation
+│   └── 📜architecture.md                 # Description de l'architecture
 │
-├── 📂models/
-│   └── 📜bert_model.pkl
+├── 📂grafana/                            # Configuration Grafana pour visualisation
+│   └── 📂provisioning/
+│       └── 📜datasource.yml              # Configuration sources de données Grafana
 │
-├── 📂notebooks/
-│   └── 📜test_bert.ipynb
+├── 📂models/                             # Modèles entraînés sauvegardés
+│   └── 📜bert_model                      # Modèle BERT sauvegardé
 │
-├── 📂src/
-│   ├── 📂api/
-│   │   ├── 📂templates/            # Nouveau dossier pour les templates HTML
-│   │   │   ├── 📜dashboard.html
-│   │   │   ├── 📜filtered_dash.html
-│   │   │   ├── 📜index.html
-│   │   │   └── 📜loging.html
-│   │   ├── 📜database.py
-│   │   ├── 📜models.py
-│   │   └── 📜main.py
+├── 📂notebooks/                          # Notebooks pour exploration et tests
+│   └── 📜test_bert.ipynb                 # Test du modèle BERT
+│
+├── 📂src/                                # Code source
+│   ├── 📂api/                            # API FastAPI
+│   │   ├── 📂routes/                     # Routes FastAPI
+│   │   │   ├── 📜auth_routes.py          # Routes d'authentification (login/logout)
+│   │   │   ├── 📜dashboard.py            # Routes pour le dashboard
+│   │   │   ├── 📜home.py                 # Routes pour la page d'accueil
+│   │   │   └── 📜comments.py             # Routes pour la gestion des commentaires
+│   │   │
+│   │   ├── 📂services/                   # Services pour l'API
+│   │   │   └── 📜auth.py                 # Service d'authentification (fonctions login, verify, token)
+│   │   │
+│   │   ├── 📂schemas/                    # Schémas de validation
+│   │   │   ├── 📜comments.py             # Validation Pydantic pour commentaires
+│   │   │   └── 📜user.py                 # Validation Pydantic pour utilisateurs
+│   │   │
+│   │   ├── 📂templates/                  # Templates HTML Jinja2
+│   │   │   ├── 📜dashboard.html          # Template pour le dashboard
+│   │   │   ├── 📜filtered_dash.html      # Template pour dashboard filtré
+│   │   │   ├── 📜index.html              # Template pour page d'accueil
+│   │   │   └── 📜login.html              # Template pour page de connexion
+│   │   │
+│   │   ├── 📜database.py                 # Gestion de la base de données
+│   │   ├── 📜models.py                   # Modèles FastAPI
+│   │   ├── 📜main.py                     # Point d'entrée FastAPI
+│   │   ├── 📜default_user.py             # Création d'un utilisateur par défaut
+│   │   └── 📜db.py                       # Connexion à SQLite
 │   │
-│   ├── 📂data/
-│   │   └── 📜load_data.py
+│   ├── 📂data/                           # Traitement des données
+│   │   └── 📜load_data.py                # Chargement des données
 │   │
-│   ├── 📂features/
-│   │   ├── 📂feature_engineering/
-│   │   └── 📜text_processor.py
+│   ├── 📂features/                       # Ingénierie des caractéristiques
+│   │   ├── 📂feature_engineering/        # Dossier pour extraction de caractéristiques
+│   │   └── 📜text_processor.py           # Traitement de texte
 │   │
-│   ├── 📂models/
-│   │   ├── 📜abstract_text_classification_model.py
-│   │   ├── 📜bert_model.py
-│   │   ├── 📜random_forest_model.py
-│   │   ├── 📜sentiment_dataset.py
-│   │   └── 📜train_models.py
+│   ├── 📂models/                         # Modèles d'apprentissage automatique
+│   │   ├── 📜abstract_text_classification_model.py  # Classe abstraite pour modèles
+│   │   ├── 📜bert_model.py               # Implémentation du modèle BERT
+│   │   ├── 📜random_forest_model.py      # Implémentation Random Forest
+│   │   ├── 📜sentiment_dataset.py        # Dataset pour analyse de sentiment
+│   │   └── 📜train_models.py             # Script d'entraînement des modèles
 │   │
-│   ├── 📂monitoring/
-│   │   └── 📜wandb_logger.py
+│   ├── 📂monitoring/                     # Monitoring des modèles
+│   │   └── 📜wandb_logger.py             # Logger pour Weights & Biases
 │   │
-│   └── 📂utils/
-│       ├── 📜helper_functions.py
-│       ├── 📜wandb_utils.py
-│       └── 📜sentiment-analysis.ico
+│   └── 📂utils/                          # Utilitaires
+│       ├── 📜helper_functions.py         # Fonctions auxiliaires
+│       ├── 📜wandb_utils.py              # Utilitaires pour Weights & Biases
+│       └── 📜sentiment-analysis.ico      # Icône pour l'application
 │
-├── 📜.dockerignore
-├── 📜.dvcignore
-├── 📜.env
-├── 📜.gitignore
-├── 📜comments.db
-├── 📜docker-compose.yml
-├── 📜Dockerfile
-├── 📜README.md
-└── 📜requirements.txt
+├── 📜.dockerignore                       # Fichiers à ignorer pour Docker
+├── 📜.dvcignore                          # Fichiers à ignorer pour DVC
+├── 📜.env                                # Variables d'environnement
+├── 📜comments.db                         # Base de données SQLite
+├── 📜docker-compose.yml                  # Configuration des services Docker
+├── 📜Dockerfile                          # Instructions de build Docker
+├── 📜README.md                           # Documentation principale
+└── 📜requirements.txt                    # Dépendances Python
