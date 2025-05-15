@@ -1,10 +1,10 @@
 from sqlalchemy.orm import Session
-from api.db import User, engine
-from api.services.auth import AuthService
+from src.api.db import User, engine
+from src.api.services.auth import AuthService
 
 def create_default_user():
     username = "mlops"
-    password = "mlops123"
+    password = "mlops"
     full_name = "Admin"
 
     with Session(engine) as session:
