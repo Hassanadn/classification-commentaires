@@ -135,16 +135,18 @@ dvc push
 
 
 📮 Exemple d’Utilisation de l’API
+```
 curl -X POST "http://localhost:8000/predict" \
   -H "Content-Type: application/json" \
   -d '{"text": "This product is incredible, I recommend it!"}'
-  
+```
 Expected response:
+```
 {
   "label": "positive",
   "score": 0.974
 }
-
+```
 
 👨‍💻 Auteurs
 
