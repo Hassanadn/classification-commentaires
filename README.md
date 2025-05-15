@@ -1,37 +1,153 @@
-# Classification de Commentaires avec BERT & FastAPI
+🧠 Classification de Commentaires avec BERT & FastAPI
+Ce projet vise à développer une application de classification automatique de commentaires textuels (analyse de sentiments ou modération de contenu) en combinant des techniques de NLP avec un modèle BERT, le tout intégré dans une API web via FastAPI.Il intègre également un système de monitoring en temps réel avec Prometheus, Grafana et Weights & Biases (wandb) pour le suivi des performances.
 
-Ce projet vise à développer une application de classification de commentaires (analyse de sentiments ou modération automatique) en combinant des techniques de NLP avec un modèle BERT, le tout intégré dans une API web via FastAPI. Il intègre également du monitoring via Prometheus, Grafana et Weights & Biases (wandb).
+📌 Objectifs
 
----
-
-## 📌 Objectifs
-
-- Nettoyer et traiter des données de commentaires.
-- Entraîner un modèle de classification basé sur BERT.
-- Déployer une API RESTful pour interagir avec le modèle.
-- Visualiser les résultats et surveiller les performances en temps réel.
-- Assurer la reproductibilité avec DVC, Docker, et wandb.
-
----
-
-## Architecture du projet
-
-### Schéma visuel
-
-![Architecture du projet](./docs/"Project Architecture".png)
+Prétraitement et nettoyage des données textuelles.
+Entraînement d’un modèle NLP basé sur BERT pour la classification.
+Déploiement d’une API RESTful avec FastAPI.
+Monitoring système et applicatif (temps de réponse, usage CPU/RAM, nombre de prédictions, etc.).
+Reproductibilité et portabilité grâce à Docker et DVC.
 
 
-Application web permettant de classifier automatiquement les commentaires des utilisateurs comme positifs ou négatifs.
+🛠️ Technologies Utilisées
 
-## grafana +prometheus
-commande: docker-compose up -d
-grafana: http://localhost:3000
-prometheus: http://localhost:9090
-compte_grafana:   nom:admin  code:admin
 
-## Installation
 
+Technologie
+Rôle
+
+
+
+🤖 BERT / Transformers
+Modèle NLP de classification basé sur le langage
+
+
+⚡ FastAPI
+Backend de l'API RESTful
+
+
+🐍 Python
+Langage principal
+
+
+🐳 Docker / Compose
+Conteneurisation et orchestration
+
+
+📈 Prometheus
+Collecte et exposition des métriques applicatives et système
+
+
+📊 Grafana
+Visualisation dynamique des métriques
+
+
+🧪 wandb
+Suivi des expériences et visualisation des performances du modèle
+
+
+🧬 DVC
+Gestion des versions de données et modèles
+
+
+
+📁 Structure du Projet
+![Interface de l'application](/docs/STructure.png)
+
+🏗️ Schéma de l'Architecture
+![Interface de l'application](/docs/Project%20Architecture.jpg)
+
+⚙️ Installation & Lancement
 1. Cloner le dépôt
-```bash
 git clone https://github.com/Hassanadn/classification-commentaires.git
 cd classification-commentaires
+
+2. Lancer les services avec Docker
+docker-compose up --build
+
+✅ L'API sera accessible à : http://localhost:8000📄 
+Documentation Swagger : http://localhost:8000/docs
+
+3. Arrêter les services
+docker-compose down
+
+
+🌐 Accès aux Interfaces
+
+
+🧠 API FastAPI
+http://localhost:8000
+API de classification des commentaires
+
+
+📄 Swagger
+http://localhost:8000/docs
+Documentation interactive de l'API
+
+
+📡 Prometheus
+http://localhost:9090
+Visualisation des métriques brutes
+
+
+📊 Grafana
+http://localhost:3000
+Dashboards personnalisés
+
+
+🎛️ Grafana Login
+admin / admin
+Identifiants par défaut (à modifier)
+
+
+
+📊 Supervision avec Prometheus & Grafana
+L’application expose des métriques via l’endpoint /metrics pour être collectées par Prometheus.
+Métriques système :
+
+💻 Utilisation CPU
+📈 Consommation mémoire
+🌐 Activité réseau
+
+Métriques applicatives :
+
+📦 Nombre total de requêtes
+⏱️ Temps moyen de prédiction
+🧠 Nombre de prédictions par classe (positif, négatif, neutre)
+
+
+📈 Suivi des Expériences avec wandb
+Chaque entraînement de modèle est suivi avec Weights & Biases :📉 Courbes de perte, 🎯 Précision, ⚖️ F1-score, 🔀 Matrice de confusion, etc.
+Connecte-toi avec ton compte wandb :
+import wandb
+wandb.login()
+
+
+📦 Versionnage avec DVC
+Utilise DVC pour versionner les datasets et modèles :
+dvc init
+dvc add data/train.csv
+dvc push
+
+
+📮 Exemple d’Utilisation de l’API
+curl -X POST "http://localhost:8000/predict" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Ce produit est incroyable, je recommande !"}'
+
+Réponse attendue :
+{
+  "label": "positif",
+  "score": 0.974
+}
+
+
+👨‍💻 Auteurs
+
+Collaboration 1: ADNAN Hassan
+Collaboration 2: EL ATRACH Abdellah
+Collaboration 3: EDDREG Khadija
+Collaboration 4: OUHMAD Hadda
+
+Projet réalisé dans le cadre du Master Data Science – 2025
