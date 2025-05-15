@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Authentification Admin</title>
-    <link rel="icon" type="image/x-icon" href="../utils/sentiment-analysis.ico">
+    <title>Connexion</title>
     <style>
         body {
             background-color: #121212;
@@ -17,12 +14,18 @@
             flex-direction: column;
             align-items: center;
         }
-        
+       
         h1 {
             margin-bottom: 10px;
             text-align: center;
         }
         
+        h2 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+       
         form {
             width: 100%;
             max-width: 400px;
@@ -30,12 +33,12 @@
             flex-direction: column;
             gap: 15px;
         }
-        
+       
         label {
             font-weight: bold;
             margin-bottom: 5px;
         }
-        
+       
         input[type="text"],
         input[type="password"] {
             width: 100%;
@@ -46,11 +49,11 @@
             color: #e0e0e0;
             font-size: 1em;
         }
-        
+       
         .password-container {
             position: relative;
         }
-        
+       
         .toggle-password {
             position: absolute;
             right: 10px;
@@ -59,7 +62,7 @@
             cursor: pointer;
             color: #888;
         }
-        
+       
         button {
             margin-top: 20px;
             background-color: #ff6600;
@@ -72,12 +75,12 @@
             transition: background-color 0.3s ease;
             width: 100%;
         }
-        
+       
         button:hover {
             background-color: #e65c00;
         }
-        
-        .message-error {
+       
+        .error-message {
             margin-top: 10px;
             padding: 10px;
             background-color: #b00020;
@@ -86,8 +89,8 @@
             font-weight: bold;
             text-align: center;
         }
-        
-        .message-success {
+       
+        .success-message {
             margin-top: 10px;
             padding: 10px;
             background-color: #2e7d32;
@@ -96,40 +99,62 @@
             font-weight: bold;
             text-align: center;
         }
+        
+        .login-container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 350px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .dashboard-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #ff6600;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .dashboard-link:hover {
+            background-color: #e65c00;
+        }
     </style>
 </head>
-
 <body>
-    <h1>Authentification Admin</h1>
-    <form method="post" action="/loging" id="admin-login-form">
-        <label for="username">Nom d'utilisateur</label>
-        <input type="text" id="username" name="username" required />
-
-        <label for="password">Mot de passe</label>
-        <div class="password-container">
-            <input type="password" id="password" name="password" required />
-            <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+    <div class="login-container">
+        <h2>Connexion</h2>
+       
+        {% if success %}
+        <div class="success-message">
+            {{ success }}
         </div>
-
-        <button type="submit">Se connecter</button>
-    </form>
-
-    {% if error_message %}
-    <div class="message-error">{{ error_message }}</div>
-    {% endif %} {% if success_message %}
-    <div class="message-success">{{ success_message }}</div>
-    {% endif %}
-
-    <script>
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
-        }
-    </script>
+        {% else %}
+        <form method="post" action="/authentication">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Se connecter</button>
+           
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+        </form>
+        {% endif %}
+    </div>
 </body>
-
 </html>

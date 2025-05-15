@@ -2,147 +2,266 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Espace Admin</title>
-    <link rel="icon" type="image/x-icon" href="../utils/sentiment-analysis.ico">
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-        
-        h1 {
-            font-weight: 700;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        
-        .action-selection {
-            margin-bottom: 20px;
-        }
-        
-        .action-selection label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1em;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-        
-        .action-selection input[type="radio"] {
-            accent-color: #ff6600;
-            width: 18px;
-            height: 18px;
-        }
-        
-        .dashboard-section h2 {
-            font-weight: 700;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-        
-        label[for="filterType"],
-        label[for="pageNumber"] {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1em;
-        }
-        
-        select,
-        input[type="number"] {
-            width: 100%;
-            max-width: 300px;
-            padding: 10px;
-            margin-bottom: 15px;
-            background-color: #1e1e1e;
-            border: none;
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-        
-        .pagination-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            max-width: 300px;
-        }
-        
-        .pagination-controls button {
-            background-color: #ff6600;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            padding: 10px 16px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .pagination-controls button:hover {
-            background-color: #e65c00;
-        }
-        
-        .pagination-controls input[type="number"] {
-            flex: 1;
-            text-align: center;
-            border-radius: 8px;
-            border: none;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            font-size: 1em;
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace Admin</title>
+  <link rel="icon" type="image/x-icon" href="../utils/sentiment-analysis.ico" />
+  <style>
+    :root {
+      --primary-color: #6c63ff;
+      --primary-hover: #574fd6;
+      --secondary-color: #9c94f8;
+      --dark-bg: #0f0f1a;
+      --card-bg: #1a1a2e;
+      --text-color: #ffffff;
+      --muted-text: #b3b3cc;
+      --border-radius: 14px;
+      --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-color);
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      max-width: 1300px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: var(--border-radius);
+      margin: 30px 0;
+      box-shadow: var(--box-shadow);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .navbar-title {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .navbar-title::before {
+      content: "";
+      margin-right: 8px;
+    }
+
+    .navbar-filter label {
+      margin-right: 8px;
+      font-size: 0.9em;
+    }
+
+    .navbar-filter select {
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      background-color: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .navbar-filter select:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .logout-btn {
+      background-color: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+      font-size: 1em;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    .logout-btn::before {
+      content: "";
+      margin-right: 6px;
+    }
+
+    .logout-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .welcome-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .welcome-section h1 {
+      font-size: 2.7em;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .welcome-section h3 {
+      color: var(--muted-text);
+      margin-top: 10px;
+    }
+
+    .action-selection {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .action-card {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      width: 240px;
+      text-align: center;
+      box-shadow: var(--box-shadow);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .action-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary-color);
+    }
+
+    .action-card.active {
+      background-color: rgba(108, 99, 255, 0.1);
+      border-color: var(--primary-color);
+    }
+
+    .action-card-icon {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .action-card input[type="radio"] {
+      display: none;
+    }
+
+    .action-card-title a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .action-card-title a:hover {
+      color: var(--secondary-color);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--muted-text);
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      background-color: var(--primary-hover);
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Bienvenue dans l'espace Admin !</h1>
-    <h3> choisissier une action</h3>
 
-    <div class="action-selection">
-        <label>
-            <input type="radio" name="adminAction" value="dashboard" checked />
-            Tableau de bord
-        </label>
-        <label>
-            <input type="radio" name="adminAction" value="stats" />
-            Analyse des statistiques
-        </label>
-    </div>
-
-    <div class="dashboard-section">
-        <h2>Tableau de bord des avis 📊</h2>
-
-        <label for="filterType">Filtrer par type d'avis</label>
-        <select id="filterType" name="filterType">
-            <option value="all">Tous</option>
-            <option value="positif">Positifs</option>
-            <option value="negatif">Négatifs</option>
-            <option value="neutre">Neutres</option>
+  <div class="navbar">
+    <div class="navbar-left">
+      <div class="navbar-title">Espace Admin</div>
+      <div class="navbar-filter">
+        <label for="filterTypeNavbar">Filtrer par sentiment :</label>
+        <select id="filterTypeNavbar" name="filterTypeNavbar">
+          <option value="all">Tous</option>
+          <option value="positif">Positifs</option>
+          <option value="negatif">Négatifs</option>
         </select>
+      </div>
     </div>
-    <footer>
-        <a href="http://localhost:3000/dashboards" class="back-btn" target="_blank">Visualisation en Grafana</a>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterSelect = document.getElementById('filterType');
-            if (filterSelect) {
-                filterSelect.addEventListener('change', function() {
-                    const selectedValue = this.value;
-                    // Rediriger vers la page filtrée avec le paramètre type
-                    window.location.href = `/filtered_dash?type=${encodeURIComponent(selectedValue)}`;
-                });
-            }
+    <button class="logout-btn" id="logoutBtn">Se déconnecter</button>
+  </div>
+
+  <div class="welcome-section">
+    <h1>Bienvenue dans l'espace Admin !</h1>
+    <h3>Choisissez une action</h3>
+  </div>
+
+  <div class="action-selection">
+    <label class="action-card">
+      <input type="radio" name="adminAction" value="dashboard" />
+      <div class="action-card-icon">📊</div>
+      <div class="action-card-title">Tableau de bord</div>
+    </label>
+
+    <label class="action-card">
+      <input type="radio" name="adminAction" value="stats" />
+      <div class="action-card-icon">📈</div>
+      <div class="action-card-title">
+        <a href="http://localhost:3000/dashboards" target="_blank">Analyse des statistiques</a>
+      </div>
+    </label>
+  </div>
+
+  <footer>
+    © 2025 MLOps Project. Tous droits réservés.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoutBtn = document.getElementById('logoutBtn');
+      const actionCards = document.querySelectorAll('.action-card');
+      const actionRadios = document.querySelectorAll('input[name="adminAction"]');
+
+      actionRadios.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+          actionCards.forEach(c => c.classList.remove('active'));
+          actionCards[index].classList.add('active');
         });
-    </script>
+      });
+
+      logoutBtn.addEventListener('click', () => {
+        window.location.href = '/';
+      });
+
+      document.getElementById('filterTypeNavbar').addEventListener('change', function () {
+        const selected = this.value;
+        window.location.href = `/filtered_dash?type=${encodeURIComponent(selected)}`;
+      });
+    });
+  </script>
+
 </body>
 
 </html>

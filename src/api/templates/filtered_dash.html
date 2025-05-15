@@ -3,121 +3,817 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord filtré</title>
     <link rel="icon" type="image/x-icon" href="../utils/sentiment-analysis.ico">
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-light: rgba(99, 102, 241, 0.1);
+            --danger: #f43f5e;
+            --danger-hover: #e11d48;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-hover: #334155;
+            --border: #475569;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
+        .header {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
         h1 {
+            font-size: 2.25rem;
             font-weight: 700;
-            font-size: 2em;
-            margin-bottom: 20px;
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
         }
-        
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background-color: var(--surface-hover);
+            transform: translateY(-2px);
+        }
+
+        .back-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background-color: var(--surface);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            flex: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-title {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .stat-positive {
+            color: var(--success);
+        }
+
+        .stat-negative {
+            color: var(--danger);
+        }
+
+        .stat-neutral {
+            color: var(--warning);
+        }
+
+        .table-container {
+            background-color: var(--surface);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
         }
-        
+
         th,
         td {
-            border: 1px solid #444;
-            padding: 8px;
+            padding: 1rem;
             text-align: left;
+            border-bottom: 1px solid var(--border);
         }
-        
+
         th {
-            background-color: #222;
+            background-color: rgba(15, 23, 42, 0.5);
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        
-        button.delete-btn {
-            background-color: #cc0000;
-            border: none;
-            color: white;
-            padding: 6px 12px;
+
+        tr:hover {
+            background-color: rgba(51, 65, 85, 0.4);
+        }
+
+        td {
+            font-size: 0.95rem;
+        }
+
+        .sentiment-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .sentiment-positive {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .sentiment-negative {
+            background-color: rgba(244, 63, 94, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+        }
+
+        .sentiment-neutral {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .actions-cell {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
             cursor: pointer;
-            border-radius: 4px;
-        }
-        
-        button.delete-btn:hover {
-            background-color: #ff3333;
-        }
-        
-        .back-btn {
-            background-color: #007bff;
             border: none;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1em;
-            margin-bottom: 20px;
         }
-        
-        .back-btn:hover {
-            background-color: #0056b3;
+
+        .btn-delete {
+            background-color: rgba(244, 63, 94, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+        }
+
+        .btn-delete:hover {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-view {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-view:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--surface);
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .modal-backdrop.active .modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .modal-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--danger);
+        }
+
+        .modal-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 1.25rem;
+        }
+
+        .modal-message {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-comment {
+            padding: 0.75rem;
+            background-color: rgba(15, 23, 42, 0.5);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .btn-modal {
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cancel {
+            background-color: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-cancel:hover {
+            background-color: var(--surface-hover);
+            color: var(--text-primary);
+        }
+
+        .btn-confirm {
+            background-color: var(--danger);
+            color: white;
+            border: none;
+        }
+
+        .btn-confirm:hover {
+            background-color: var(--danger-hover);
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .empty-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            opacity: 0.5;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .page-info {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        .page-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.375rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .page-btn:hover {
+            background-color: var(--surface-hover);
+            color: var(--text-primary);
+        }
+
+        .page-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background-color: var(--surface);
+            color: var(--text-primary);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 1001;
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        }
+
+        .toast.active {
+            transform: translateY(0);
+        }
+
+        .toast-success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast-error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .toast-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-message {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            padding: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            th,
+            td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .actions-cell {
+                flex-direction: column;
+            }
+
+            .sentiment-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Tableau de bord filtré</h1>
-    <button class="back-btn" onclick="window.history.back()">← Retour</button>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>User ID</th>
-                <th>Avis</th>
-                <th>Sentiment</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for comment in comments %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ comment.user_id if comment.user_id else 'N/A' }}</td>
-                <td>{{ comment.text }}</td>
-                <td>{{ comment.sentiment }}</td>
-                <td><button class="delete-btn" data-id="{{ comment.id }}">Supprimer</button></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="header">
+        <h1>Tableau de bord filtré</h1>
+    </div>
+
+    <div class="actions">
+        <button class="back-btn" onclick="window.history.back()">
+            <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+                </path>
+            </svg>
+            Retour
+        </button>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-header">
+                <span class="stat-title">Commentaires positifs</span>
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div class="stat-value stat-positive" id="positive-count">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-header">
+                <span class="stat-title">Commentaires négatifs</span>
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div class="stat-value stat-negative" id="negative-count">0</div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>User ID</th>
+                    <th>Avis</th>
+                    <th>Sentiment</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="comments-table-body">
+                {% for comment in comments %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ comment.user_id if comment.user_id else 'Anonyme' }}</td>
+                    <td>{{ comment.content }}</td>
+                    <td>
+                        <span
+                            class="sentiment-badge {% if comment.sentiment.lower() in ['positif', 'positive', 'posite'] %}sentiment-positive{% elif comment.sentiment.lower() in ['négatif', 'negatif', 'negative'] %}sentiment-negative{% else %}sentiment-neutral{% endif %}">
+                            {{ comment.sentiment }}
+                        </span>
+                    </td>
+                    <td class="actions-cell">
+                        <button class="btn btn-delete"
+                            onclick="showDeleteModal('{{ comment.id }}', '{{ comment.content }}')">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
+                            </svg>
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <div class="page-info">Affichage de <span id="showing-start">1</span> à <span id="showing-end">10</span> sur
+            <span id="total-comments">0</span> commentaires</div>
+        <div class="page-buttons">
+            <button class="page-btn disabled" id="prev-page">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn disabled" id="next-page">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal-backdrop" id="delete-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <svg class="modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                    </path>
+                </svg>
+                <h3 class="modal-title">Confirmer la suppression</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message">Êtes-vous sûr de vouloir supprimer ce commentaire ? Cette action est
+                    irréversible.</p>
+                <div class="modal-comment" id="comment-to-delete"></div>
+                <div class="modal-actions">
+                    <button class="btn-modal btn-cancel" onclick="hideDeleteModal()">Annuler</button>
+                    <button class="btn-modal btn-confirm" id="confirm-delete">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de notification -->
+    <div class="toast" id="toast">
+        <svg class="toast-icon" id="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <div class="toast-content">
+            <div class="toast-title" id="toast-title">Succès</div>
+            <div class="toast-message" id="toast-message">Le commentaire a été supprimé avec succès.</div>
+        </div>
+        <button class="toast-close" onclick="hideToast()">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const deleteButtons = document.querySelectorAll('button.delete-btn');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', async function() {
-                    const commentId = this.getAttribute('data-id');
-                    if (confirm('Voulez-vous vraiment supprimer ce commentaire ?')) {
-                        try {
-                            const response = await fetch(`/comments/${commentId}`, {
-                                method: 'DELETE'
-                            });
-                            const result = await response.json();
-                            alert(result.message);
-                            if (response.ok) {
-                                // Supprimer la ligne du tableau
-                                this.closest('tr').remove();
-                            }
-                        } catch (error) {
-                            alert('Erreur lors de la suppression du commentaire.');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Appel des fonctions au chargement de la page
+            updateStats();
+            updatePagination();
+
+            // Gestionnaire pour le bouton de confirmation de suppression
+            const confirmDeleteBtn = document.getElementById('confirm-delete');
+            confirmDeleteBtn.addEventListener('click', deleteComment);
+            
+            // Debug: Afficher les données des commentaires
+          
+        });
+
+        // Stocker l'ID du commentaire à supprimer
+        let commentToDeleteId = null;
+
+        // Afficher le modal de suppression
+        function showDeleteModal(commentId, commentContent) {
+            commentToDeleteId = commentId;
+            document.getElementById('comment-to-delete').textContent = commentContent;
+            document.getElementById('delete-modal').classList.add('active');
+        }
+
+        // Masquer le modal de suppression
+        function hideDeleteModal() {
+            document.getElementById('delete-modal').classList.remove('active');
+            commentToDeleteId = null;
+        }
+
+        // Supprimer le commentaire
+        async function deleteComment() {
+            if (!commentToDeleteId) return;
+
+            try {
+                const response = await fetch(`/comments/${commentToDeleteId}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Trouver et supprimer la ligne du tableau
+                    const rows = document.querySelectorAll('tbody tr');
+                    for (let row of rows) {
+                        const deleteBtn = row.querySelector('.btn-delete');
+                        if (deleteBtn && deleteBtn.getAttribute('onclick').includes(commentToDeleteId)) {
+                            row.remove();
+                            break;
                         }
                     }
-                });
+
+                    // Mettre à jour les statistiques
+                    updateStats();
+                    updatePagination();
+
+                    // Afficher le toast de succès
+                    showToast('Succès', 'Le commentaire a été supprimé avec succès.', 'success');
+                } else {
+                    showToast('Erreur', result.message || 'Une erreur est survenue lors de la suppression.', 'error');
+                }
+            } catch (error) {
+                showToast('Erreur', 'Une erreur est survenue lors de la suppression.', 'error');
+            }
+
+            hideDeleteModal();
+        }
+
+        // Afficher le toast de notification
+        function showToast(title, message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastMessage = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toast.className = 'toast';
+            toast.classList.add(`toast-${type}`);
+
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            if (type === 'success') {
+                toastIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>';
+            } else {
+                toastIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>';
+            }
+
+            toast.classList.add('active');
+
+            setTimeout(hideToast, 5000);
+        }
+
+        // Masquer le toast de notification
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('active');
+        }
+
+        // Mettre à jour les statistiques des commentaires
+        function updateStats() {
+            const rows = document.querySelectorAll('#comments-table-body tr');
+            let positiveCount = 0;
+            let negativeCount = 0;
+            let neutralCount = 0;
+
+            rows.forEach(row => {
+                const sentimentCell = row.querySelector('td:nth-child(4)');
+                if (sentimentCell) {
+                    const sentimentText = sentimentCell.textContent.trim().toLowerCase();
+                    
+                    // Debug: Afficher le texte du sentiment
+                    console.log("Texte du sentiment:", sentimentText);
+                    
+                    if (sentimentText.includes('positif') || sentimentText.includes('positive') || sentimentText.includes('posite')) {
+                        positiveCount++;
+                    } else if (sentimentText.includes('négatif') || sentimentText.includes('negatif') || sentimentText.includes('negative')) {
+                        negativeCount++;
+                    } else {
+                        neutralCount++;
+                    }
+                }
             });
-        });
+
+            // Mise à jour des éléments DOM
+            document.getElementById('positive-count').textContent = positiveCount;
+            document.getElementById('negative-count').textContent = negativeCount;
+            
+            console.log("Statistiques mises à jour:", {
+                positifs: positiveCount, 
+                négatifs: negativeCount, 
+                neutres: neutralCount,
+                total: rows.length 
+            });
+
+            return {
+                positive: positiveCount,
+                negative: negativeCount,
+                neutral: neutralCount,
+                total: rows.length
+            };
+        }
+        
+        // Mettre à jour les informations de pagination
+        function updatePagination() {
+            const rows = document.querySelectorAll('#comments-table-body tr');
+            const totalComments = rows.length;
+
+            document.getElementById('showing-start').textContent = totalComments > 0 ? '1' : '0';
+            document.getElementById('showing-end').textContent = Math.min(5, totalComments);
+            document.getElementById('total-comments').textContent = totalComments;
+            
+            // Mettre à jour l'état des boutons de pagination
+            document.getElementById('prev-page').classList.add('disabled');
+            document.getElementById('next-page').classList[totalComments > 5 ? 'remove' : 'add']('disabled');
+        }
     </script>
 </body>
 

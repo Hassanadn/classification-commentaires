@@ -36,7 +36,7 @@ pydantic==2.6.4               # Validation et typage de données
 python-jose==3.4.0            # Authentification par JSON Web Tokens (JWT)
 passlib==1.7.4                # Hachage sécurisé des mots de passe
 python-multipart==0.0.9       # Support de multipart/form-data (upload)
-
+pyjwt==2.4.0
 ###########################################
 #           VARIABLES D’ENVIRONNEMENT     #
 ###########################################
@@ -47,11 +47,17 @@ python-dotenv==1.0.1          # Chargement de .env pour config sécurisée
 ###########################################
 prometheus-client==0.18.0     # Client Prometheus pour exposer des métriques
 prometheus-fastapi-instrumentator==7.1.0  # Intégration Prometheus avec FastAPI
+sqlmodel>=0.0.8 
 
 # 🔽 Optionnel : pipdeptree pour debug des dépendances
 # pipdeptree==2.13.0          # (à installer manuellement si besoin de debug)
 
 
+<<<<<<< HEAD
+
+
+=======
 aiosqlite==0.21.0
 databases==0.9.0
 sqlalchemy==2.0.40
+>>>>>>> origin/abde/mlops_v2
