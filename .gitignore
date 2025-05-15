@@ -1,18 +1,24 @@
-# Environnement virtuel
+########################################
+# ENVIRONNEMENT VIRTUEL PYTHON
+########################################
 venv/
+.Python
 
-# Fichiers Python compilés
+########################################
+# FICHIERS COMPILÉS PAR PYTHON
+########################################
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-.Python
 
-# Build
+########################################
+# FICHIERS DE BUILD / DISTRIBUTION
+########################################
 build/
-develop-eggs/
 dist/
 downloads/
+develop-eggs/
 eggs/
 .eggs/
 lib/
@@ -25,28 +31,46 @@ wheels/
 .installed.cfg
 *.egg
 
-# Données et modèles gérés par DVC
+########################################
+# DONNÉES ET MODÈLES GÉRÉS PAR DVC
+########################################
+# Ignorer tous les fichiers dans /data et /models,
+# sauf les dossiers et fichiers .dvc nécessaires à DVC
 data/**
 !data/
 !data/**/*.dvc
 !data/raw/
 !data/processed/
 !data/external/
+
 models/**
 !models/
 !models/**/*.dvc
 
-# Fichiers spécifiques de datasets si besoin
+# Clé de service pour DVC GCP
+dvc.json
+
+########################################
+# FICHIERS DE DATASETS À NE PAS SUIVRE
+########################################
 /test.csv
 /train.csv
 
-# Logs et monitoring
+########################################
+# LOGS ET OUTILS DE MONITORING
+########################################
 logs/
 .mlflow/
 
-# Fichiers d'environnement et secrets
+########################################
+# FICHIERS D'ENVIRONNEMENT ET SECRETS
+########################################
+# Décommentez si vous utilisez .env
 # .env
 
-# Dossiers d'IDE
+########################################
+# 🔹 CONFIGURATION DES IDES
+########################################
 .idea/
 .vscode/
+

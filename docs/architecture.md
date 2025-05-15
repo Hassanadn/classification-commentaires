@@ -19,9 +19,14 @@
 ├── 📂docs/                               # Documentation
 │   └── 📜architecture.md                 # Description de l'architecture
 │
+<<<<<<< HEAD
 ├── 📂grafana/                            # Configuration Grafana pour visualisation
 │   └── 📂provisioning/
 │       └── 📜datasource.yml              # Configuration sources de données Grafana
+=======
+├── 📂models/
+│   └── 📜bert_model/
+>>>>>>> origin/abde/mlops_v2
 │
 ├── 📂models/                             # Modèles entraînés sauvegardés
 │   └── 📜bert_model                      # Modèle BERT sauvegardé
