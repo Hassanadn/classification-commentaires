@@ -78,6 +78,9 @@ docker-compose down
 
 🧠 API FastAPI
 http://localhost:8000
+mlops / mlops
+Identifiants par défaut (à modifier)
+
 API de classification des commentaires
 
 
@@ -134,11 +137,11 @@ dvc push
 📮 Exemple d’Utilisation de l’API
 curl -X POST "http://localhost:8000/predict" \
   -H "Content-Type: application/json" \
-  -d '{"text": "Ce produit est incroyable, je recommande !"}'
-
-Réponse attendue :
+  -d '{"text": "This product is incredible, I recommend it!"}'
+  
+Expected response:
 {
-  "label": "positif",
+  "label": "positive",
   "score": 0.974
 }
 
