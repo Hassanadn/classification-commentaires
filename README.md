@@ -1,13 +1,27 @@
-# Classification de Commentaires - Application Web
+# Classification de Commentaires avec BERT & FastAPI
+
+Ce projet vise à développer une application de classification de commentaires (analyse de sentiments ou modération automatique) en combinant des techniques de NLP avec un modèle BERT, le tout intégré dans une API web via FastAPI. Il intègre également du monitoring via Prometheus, Grafana et Weights & Biases (wandb).
+
+---
+
+## 📌 Objectifs
+
+- Nettoyer et traiter des données de commentaires.
+- Entraîner un modèle de classification basé sur BERT.
+- Déployer une API RESTful pour interagir avec le modèle.
+- Visualiser les résultats et surveiller les performances en temps réel.
+- Assurer la reproductibilité avec DVC, Docker, et wandb.
+
+---
+
+## Architecture du projet
+
+### Schéma visuel
+
+![Architecture du projet](./docs/"Project Architecture".png)
 
 
 Application web permettant de classifier automatiquement les commentaires des utilisateurs comme positifs ou négatifs.
-
-## Fonctionnalités
-
-- Classification automatique des commentaires
-- Interface web pour visualiser les produits et leurs commentaires
-- API REST pour l'intégration avec d'autres systèmes
 
 ## grafana +prometheus
 commande: docker-compose up -d

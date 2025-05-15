@@ -1,63 +1,59 @@
 ###########################################
 #         LIBRAIRIES DATA SCIENCE         #
 ###########################################
-numpy==1.25.2                 # Compatible avec torch 2.1.2 et tensorflow
-pandas==2.1.4                 # Analyse de données tabulaires
-scikit-learn==1.3.2           # Modèles ML classiques : SVM, RandomForest, etc.
-nltk==3.8.1                   # Traitement du langage naturel
-joblib==1.4.2                 # Sauvegarde et chargement de modèles
-beautifulsoup4==4.12.3        # Analyse HTML pour le web scraping
+numpy==1.25.2                   # Compatible avec torch 2.1.2 et tensorflow
+pandas==2.1.4                   # Analyse de données tabulaires
+scikit-learn==1.3.2             # Modèles ML classiques : SVM, RandomForest, etc.
+nltk==3.8.1                     # Traitement du langage naturel
+joblib==1.4.2                   # Sauvegarde et chargement de modèles
+beautifulsoup4==4.12.3          # Analyse HTML pour le web scraping
 
 ###########################################
 #     FRAMEWORKS DE DEEP LEARNING / NLP   #
 ###########################################
-torch==2.1.2                  # PyTorch pour le deep learning
-transformers==4.39.3          # Modèles NLP de Hugging Face
-accelerate==0.29.3            # Support multi-GPU/TPU pour transformers
-# tensorflow==2.14.0          # (Décommenter si besoin de TensorFlow)
+torch==2.1.2                    # PyTorch pour le deep learning
+transformers==4.39.3            # Modèles NLP de Hugging Face
+accelerate==0.29.3              # Support multi-GPU/TPU pour transformers
+# tensorflow==2.14.0            # (Décommenter si besoin de TensorFlow)
 
 ###########################################
 #               MLOps / DVC               #
 ###########################################
-dvc==3.30.1                   # Data Version Control (MLOps & pipelines)
+dvc==3.30.1                     # Data Version Control (MLOps & pipelines)
+
+###########################################
+#         BASE DE DONNÉES & ORM           #
+###########################################
+sqlalchemy==2.0.40              # ORM pour interactions avec BDD SQL
+sqlmodel>=0.0.8                 # ORM compatible FastAPI
+databases==0.9.0                # Accès async aux BDD
+aiosqlite==0.21.0               # SQLite async (utilisé avec databases)
 
 ###########################################
 #         API / WEB (FastAPI stack)       #
 ###########################################
-fastapi==0.110.0              # Framework web async pour APIs RESTful
-starlette==0.36.3             # Core ASGI utilisé par FastAPI
-jinja2==3.1.4                 # Templates HTML côté serveur
-uvicorn==0.25.0               # Serveur ASGI performant
-pydantic==2.6.4               # Validation et typage de données
+fastapi==0.110.0                # Framework web async pour APIs RESTful
+starlette==0.36.3               # Core ASGI utilisé par FastAPI
+uvicorn==0.25.0                 # Serveur ASGI performant
+jinja2==3.1.4                   # Templates HTML côté serveur
+pydantic==2.6.4                 # Validation et typage de données
 
 ###########################################
-#            SÉCURITÉ (JWT etc.)          #
+#            SÉCURITÉ / AUTH              #
 ###########################################
-python-jose==3.4.0            # Authentification par JSON Web Tokens (JWT)
-passlib==1.7.4                # Hachage sécurisé des mots de passe
-python-multipart==0.0.9       # Support de multipart/form-data (upload)
-pyjwt==2.4.0
-###########################################
-#           VARIABLES D’ENVIRONNEMENT     #
-###########################################
-python-dotenv==1.0.1          # Chargement de .env pour config sécurisée
+python-jose==3.4.0              # Authentification par JSON Web Tokens (JWT)
+passlib==1.7.4                  # Hachage sécurisé des mots de passe
+python-multipart==0.0.9         # Support multipart/form-data (upload fichiers)
+pyjwt==2.4.0                    # JWT simple à manipuler
 
 ###########################################
-#            MONITORING & METRICS         #
+#        VARIABLES D’ENVIRONNEMENT        #
 ###########################################
-prometheus-client==0.18.0     # Client Prometheus pour exposer des métriques
+python-dotenv==1.0.1            # Chargement de .env pour config sécurisée
+
+###########################################
+#         MONITORING & OBSERVABILITÉ      #
+###########################################
+prometheus-client==0.18.0       # Client Prometheus pour exposer des métriques
 prometheus-fastapi-instrumentator==7.1.0  # Intégration Prometheus avec FastAPI
-sqlmodel>=0.0.8 
 
-# 🔽 Optionnel : pipdeptree pour debug des dépendances
-# pipdeptree==2.13.0          # (à installer manuellement si besoin de debug)
-
-
-<<<<<<< HEAD
-
-
-=======
-aiosqlite==0.21.0
-databases==0.9.0
-sqlalchemy==2.0.40
->>>>>>> origin/abde/mlops_v2

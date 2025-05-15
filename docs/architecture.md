@@ -19,14 +19,9 @@
 ├── 📂docs/                               # Documentation
 │   └── 📜architecture.md                 # Description de l'architecture
 │
-<<<<<<< HEAD
 ├── 📂grafana/                            # Configuration Grafana pour visualisation
 │   └── 📂provisioning/
 │       └── 📜datasource.yml              # Configuration sources de données Grafana
-=======
-├── 📂models/
-│   └── 📜bert_model/
->>>>>>> origin/abde/mlops_v2
 │
 ├── 📂models/                             # Modèles entraînés sauvegardés
 │   └── 📜bert_model                      # Modèle BERT sauvegardé
@@ -71,7 +66,6 @@
 │   ├── 📂models/                         # Modèles d'apprentissage automatique
 │   │   ├── 📜abstract_text_classification_model.py  # Classe abstraite pour modèles
 │   │   ├── 📜bert_model.py               # Implémentation du modèle BERT
-│   │   ├── 📜random_forest_model.py      # Implémentation Random Forest
 │   │   ├── 📜sentiment_dataset.py        # Dataset pour analyse de sentiment
 │   │   └── 📜train_models.py             # Script d'entraînement des modèles
 │   │

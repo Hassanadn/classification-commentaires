@@ -2,9 +2,9 @@ import sys
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.db import  init_db
+from src.api.db import  init_db
 from src.api.routes import home, auth_routes, dashboard, comments
-from api.default_user import create_default_user  # nouveau fichier
+from src.api.default_user import create_default_user  # nouveau fichier
 # Ajouter le chemin racine au sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 

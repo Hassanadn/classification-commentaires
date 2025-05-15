@@ -4,8 +4,8 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from starlette.status import HTTP_401_UNAUTHORIZED
 
-from api.database import get_db
-from api.services.auth import AuthService 
+from src.api.database import get_db
+from src.api.services.auth import AuthService 
 
 
 router = APIRouter()

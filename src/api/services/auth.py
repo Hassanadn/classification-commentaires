@@ -30,7 +30,7 @@ class AuthService:
 
     @staticmethod
     def authenticate_user(username: str, password: str, db) -> Optional[dict]:
-        from api.db import User  # pour éviter les importations circulaires
+        from src.api.db import User  # pour éviter les importations circulaires
         user = db.query(User).filter(User.username == username).first()
         if not user:
             return None
