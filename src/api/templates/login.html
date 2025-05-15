@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Connexion</title>
@@ -156,5 +156,182 @@
         </form>
         {% endif %}
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion</title>
+  <style>
+    :root {
+      --primary-color: #6366f1;
+      --primary-hover: #4f46e5;
+      --background: #0f172a;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border-color: #334155;
+      --danger: #ef4444;
+      --success: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text-primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .login-container {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 0.75rem;
+      background-color: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    button {
+      margin-top: 1rem;
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 0.5rem;
+      color: white;
+      padding: 0.75rem;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .error-message {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: rgba(239, 68, 68, 0.15);
+      border-left: 4px solid var(--danger);
+      border-radius: 0.5rem;
+      color: var(--danger);
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .success-message {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: rgba(16, 185, 129, 0.15);
+      border-left: 4px solid var(--success);
+      border-radius: 0.5rem;
+      color: var(--success);
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .dashboard-link {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+    }
+
+    .dashboard-link:hover {
+      background-color: var(--primary-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Authentification Admin</h2>
+
+    {% if success %}
+      <div class="success-message">
+        {{ success }}
+      </div>
+      <a class="dashboard-link" href="/dashboard">Aller au tableau de bord</a>
+    {% else %}
+      <form method="post" action="/authentication">
+        <div class="form-group">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Se connecter</button>
+
+        {% if error %}
+          <div class="error-message">
+            {{ error }}
+          </div>
+        {% endif %}
+      </form>
+    {% endif %}
+  </div>
 </body>
 </html>

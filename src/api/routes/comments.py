@@ -17,10 +17,10 @@ from requests import Session
 from transformers import BertForSequenceClassification, BertTokenizer
 from sqlalchemy import select
 
-from api import database
-from api.db import Base, Comment
-from api.schemas import comment
-from api.services.auth import AuthService
+from src.api import database
+from src.api.db import Base, Comment
+from src.api.schemas import comment
+from src.api.services.auth import AuthService
 from src.api.database import engine
 from src.features.feature_engineering import FeatureEngineer
 from starlette.status import HTTP_303_SEE_OTHER
