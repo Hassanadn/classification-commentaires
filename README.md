@@ -148,9 +148,9 @@ Expected response:
 
 👨‍💻 Auteurs
 
-Collaboration 1: ADNAN Hassan
-Collaboration 2: EL ATRACH Abdellah
-Collaboration 3: EDDREG Khadija
-Collaboration 4: OUHMAD Hadda
+-Collaboration 1: ADNAN Hassan
+-Collaboration 2: EL ATRACH Abdellah
+-Collaboration 3: EDDREG Khadija
+-Collaboration 4: OUHMAD Hadda
 
 Projet réalisé dans le cadre du Master Data Science – 2025
