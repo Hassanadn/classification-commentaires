@@ -41,7 +41,6 @@ data/**
 !data/**/*.dvc
 !data/raw/
 !data/processed/
-!data/external/
 
 models/**
 !models/
