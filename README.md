@@ -153,7 +153,7 @@ curl -X POST "http://localhost:8000/predict" \
   -d '{"text": "This product is incredible, I recommend it!"}'
 ```
 Expected response:
-```json
+``` json
 {
   "label": "positive"
 }
