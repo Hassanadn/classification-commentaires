@@ -1,6 +1,8 @@
 🧠 Classification de Commentaires avec BERT & FastAPI
 Ce projet vise à développer une application de classification automatique de commentaires textuels (analyse de sentiments ou modération de contenu) en combinant des techniques de NLP avec un modèle BERT, le tout intégré dans une API web via FastAPI.Il intègre également un système de monitoring en temps réel avec Prometheus, Grafana et Weights & Biases (wandb) pour le suivi des performances.
 
+---
+
 📌 Objectifs
 
 Prétraitement et nettoyage des données textuelles.
@@ -9,55 +11,57 @@ Déploiement d’une API RESTful avec FastAPI.
 Monitoring système et applicatif (temps de réponse, usage CPU/RAM, nombre de prédictions, etc.).
 Reproductibilité et portabilité grâce à Docker et DVC.
 
+---
 
 🛠️ Technologies Utilisées
 
+| Technologie       | Rôle                                                        |
+|-------------------|-------------------------------------------------------------|
+| 🤖 BERT / Transformers | Modèle NLP de classification basé sur le langage        |
+| ⚡ FastAPI         | Backend de l'API RESTful                                    |
+| 🐍 Python         | Langage principal                                            |
+| 🐳 Docker / Compose | Conteneurisation et orchestration                         |
+| 📈 Prometheus     | Collecte des métriques système et applicatives              |
+| 📊 Grafana        | Visualisation des métriques                                 |
+| 🧪 wandb          | Suivi des expériences et performance du modèle              |
+| 🧬 DVC            | Gestion des versions de données et modèles                  |
 
-
-Technologie
-Rôle
-
-
-
-🤖 BERT / Transformers
-Modèle NLP de classification basé sur le langage
-
-
-⚡ FastAPI
-Backend de l'API RESTful
-
-
-🐍 Python
-Langage principal
-
-
-🐳 Docker / Compose
-Conteneurisation et orchestration
-
-
-📈 Prometheus
-Collecte et exposition des métriques applicatives et système
-
-
-📊 Grafana
-Visualisation dynamique des métriques
-
-
-🧪 wandb
-Suivi des expériences et visualisation des performances du modèle
-
-
-🧬 DVC
-Gestion des versions de données et modèles
-
-
+---
 
 📁 Structure du Projet
 ![Interface de l'application](/docs/STructure.png)
+<<<<<<< HEAD
+
+---
+=======
+>>>>>>> origin/master
 
 🏗️ Schéma de l'Architecture
 
 ![Interface de l'application](/docs/Project%20Architecture.jpg)
+
+---
+
+## 🖥️ Interface Utilisateur
+
+Voici un aperçu de l’interface graphique de notre application :
+
+- **Page d'accueil :**  
+  ![Interface d'accueil de l'application](docs/Accueil.jpg)
+
+- **Formulaire de prédiction :**  
+  ![Formulaire de prédiction](docs/Prediction.jpg)
+
+- **Résultat de classification :**  
+  ![Résultat de classification](docs/Resultat.jpg)
+
+- **Résultat de classification :**  
+  ![Espace administrateur](docs/Espace%20d'admine.jpg)
+
+- - **Résultat de classification :**  
+  ![Résultat filtré](docs/ResultatFilttred.jpg)
+
+---
 
 ⚙️ Installation & Lancement
 1. Cloner le dépôt
@@ -122,7 +126,12 @@ Métriques applicatives :
 
 
 📈 Suivi des Expériences avec wandb
-Chaque entraînement de modèle est suivi avec Weights & Biases :📉 Courbes de perte, 🎯 Précision, ⚖️ F1-score, 🔀 Matrice de confusion, etc.
+Chaque entraînement de modèle est suivi avec Weights & Biases :
+- 📉 Courbes de perte
+- 🎯 Précision
+- ⚖️ F1-score 
+- 🔀 Matrice de confusion, etc.
+
 Connecte-toi avec ton compte wandb :
 import wandb
 wandb.login()
@@ -144,8 +153,7 @@ curl -X POST "http://localhost:8000/predict" \
 Expected response:
 ```json
 {
-  "label": "positive",
-  "score": 0.974
+  "label": "positive"
 }
 ```
 
