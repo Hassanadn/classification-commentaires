@@ -90,7 +90,10 @@ docker-compose down
 
 🧠 API FastAPI
 http://localhost:8000
-mlops / mlops
+```bash
+username : mlops
+password: mlops
+```
 Identifiants par défaut (à modifier)
 
 API de classification des commentaires
@@ -112,7 +115,9 @@ Dashboards personnalisés
 
 
 🎛️ Grafana Login
+```bash
 admin / admin
+```
 Identifiants par défaut (à modifier)
 
 
