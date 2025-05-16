@@ -29,6 +29,7 @@ Reproductibilité et portabilité grâce à Docker et DVC.
 ---
 
 📁 Structure du Projet
+
 ![Interface de l'application](/docs/STructure.png)
 
 ---
