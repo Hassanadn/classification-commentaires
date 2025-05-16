@@ -56,6 +56,7 @@ Gestion des versions de données et modèles
 ![Interface de l'application](/docs/STructure.png)
 
 🏗️ Schéma de l'Architecture
+
 ![Interface de l'application](/docs/Project%20Architecture.jpg)
 
 ⚙️ Installation & Lancement
@@ -66,8 +67,8 @@ cd classification-commentaires
 2. Lancer les services avec Docker
 docker-compose up --build
 
-✅ L'API sera accessible à : http://localhost:8000📄 
-Documentation Swagger : http://localhost:8000/docs
+- ✅ L'API sera accessible à : http://localhost:8000
+- 📄Documentation Swagger : http://localhost:8000/docs
 
 3. Arrêter les services
 docker-compose down
