@@ -58,7 +58,7 @@ Voici un aperçu de l’interface graphique de notre application :
 
 - **Espace administrateur :** 
 
-  ![Espace administrateur](docs/Espace%20d'admine.jpg)
+  ![Espace administrateur](docs/Espace%20d'admin.jpg)
 
 - - **Résultat filtré :**  
 
