@@ -69,7 +69,9 @@ Voici un aperçu de l’interface graphique de notre application :
 ⚙️ Installation & Lancement
 1. Cloner le dépôt
 git clone https://github.com/Hassanadn/classification-commentaires.git
+```bash
 cd classification-commentaires
+```
 
 2. Lancer les services avec Docker
 ```bash
