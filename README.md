@@ -30,8 +30,11 @@ Reproductibilité et portabilité grâce à Docker et DVC.
 
 📁 Structure du Projet
 ![Interface de l'application](/docs/STructure.png)
+<<<<<<< HEAD
 
 ---
+=======
+>>>>>>> origin/master
 
 🏗️ Schéma de l'Architecture
 
