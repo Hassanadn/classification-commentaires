@@ -126,15 +126,15 @@ Identifiants par défaut (à modifier)
 L’application expose des métriques via l’endpoint /metrics pour être collectées par Prometheus.
 Métriques système :
 
-💻 Utilisation CPU
-📈 Consommation mémoire
-🌐 Activité réseau
+- 💻 Utilisation CPU
+- 📈 Consommation mémoire
+- 🌐 Activité réseau
 
 Métriques applicatives :
 
-📦 Nombre total de requêtes
-⏱️ Temps moyen de prédiction
-🧠 Nombre de prédictions par classe (positif, négatif, neutre)
+- 📦 Nombre total de requêtes
+- ⏱️ Temps moyen de prédiction
+- 🧠 Nombre de prédictions par classe (positif, négatif, neutre)
 
 
 📈 Suivi des Expériences avec wandb
@@ -145,15 +145,19 @@ Chaque entraînement de modèle est suivi avec Weights & Biases :
 - 🔀 Matrice de confusion, etc.
 
 Connecte-toi avec ton compte wandb :
+```bash
 import wandb
 wandb.login()
+```
 
 
 📦 Versionnage avec DVC
 Utilise DVC pour versionner les datasets et modèles :
+```bash
 dvc init
 dvc add data/train.csv
 dvc push
+```
 
 
 📮 Exemple d’Utilisation de l’API
@@ -171,10 +175,10 @@ Expected response:
 
 👨‍💻 Auteurs
 
-- ADNAN Hassan
-- EL ATRACH Abdellah
-- OUHMAD Hadda
-- EDDREG Khadija
+- **ADNAN Hassan**
+- **EL ATRACH Abdellah**
+- **OUHMAD Hadda**
+- **EDDREG Khadija**
 
 
 Projet réalisé dans le cadre du Master Data Science – 2025
