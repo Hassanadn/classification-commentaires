@@ -72,13 +72,17 @@ git clone https://github.com/Hassanadn/classification-commentaires.git
 cd classification-commentaires
 
 2. Lancer les services avec Docker
+```bash
 docker-compose up --build
+```
 
 - ✅ L'API sera accessible à : http://localhost:8000
 - 📄Documentation Swagger : http://localhost:8000/docs
 
 3. Arrêter les services
+```bash
 docker-compose down
+```
 
 
 🌐 Accès aux Interfaces
