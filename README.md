@@ -30,11 +30,8 @@ Reproductibilité et portabilité grâce à Docker et DVC.
 
 📁 Structure du Projet
 ![Interface de l'application](/docs/STructure.png)
-<<<<<<< HEAD
 
 ---
-=======
->>>>>>> origin/master
 
 🏗️ Schéma de l'Architecture
 
@@ -47,18 +44,23 @@ Reproductibilité et portabilité grâce à Docker et DVC.
 Voici un aperçu de l’interface graphique de notre application :
 
 - **Page d'accueil :**  
+
   ![Interface d'accueil de l'application](docs/Accueil.jpg)
 
-- **Formulaire de prédiction :**  
-  ![Formulaire de prédiction](docs/Prediction.jpg)
+- **Formulaire de prédiction :** 
+
+  ![Résultat de prédiction positif](docs/Prediction.jpg)
 
 - **Résultat de classification :**  
-  ![Résultat de classification](docs/Resultat.jpg)
 
-- **Résultat de classification :**  
+  ![Résultat de prédiction négatif](docs/Resultat.jpg)
+
+- **Espace administrateur :** 
+
   ![Espace administrateur](docs/Espace%20d'admine.jpg)
 
-- - **Résultat de classification :**  
+- - **Résultat filtré :**  
+
   ![Résultat filtré](docs/ResultatFilttred.jpg)
 
 ---
@@ -159,9 +161,10 @@ Expected response:
 
 👨‍💻 Auteurs
 
-- Collaboration 1: ADNAN Hassan
-- Collaboration 2: EL ATRACH Abdellah
-- Collaboration 3: EDDREG Khadija
-- Collaboration 4: OUHMAD Hadda
+- ADNAN Hassan
+- EL ATRACH Abdellah
+- OUHMAD Hadda
+- EDDREG Khadija
+
 
 Projet réalisé dans le cadre du Master Data Science – 2025
