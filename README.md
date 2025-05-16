@@ -29,6 +29,7 @@ Reproductibilité et portabilité grâce à Docker et DVC.
 ---
 
 📁 Structure du Projet
+
 ![Interface de l'application](/docs/STructure.png)
 
 ---
@@ -47,11 +48,11 @@ Voici un aperçu de l’interface graphique de notre application :
 
   ![Interface d'accueil de l'application](docs/Accueil.jpg)
 
-- **Formulaire de prédiction :** 
+- **Résultat de prédiction positif :** 
 
   ![Résultat de prédiction positif](docs/Prediction.jpg)
 
-- **Résultat de classification :**  
+- **Résultat de prédiction négatif :**  
 
   ![Résultat de prédiction négatif](docs/Resultat.jpg)
 
