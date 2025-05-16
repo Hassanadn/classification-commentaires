@@ -68,8 +68,9 @@ Voici un aperçu de l’interface graphique de notre application :
 
 ⚙️ Installation & Lancement
 1. Cloner le dépôt
-git clone https://github.com/Hassanadn/classification-commentaires.git
+
 ```bash
+git clone https://github.com/Hassanadn/classification-commentaires.git
 cd classification-commentaires
 ```
 
